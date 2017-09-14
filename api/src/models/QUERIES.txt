@@ -1,0 +1,58 @@
+QUERIES
+-CREAR UNICO NODO CLIENTE:
+
+	CREATE (n:Client {id:21, name: 'Merio',lastname:'Werio',email:'elmerio@yahoo.com', pass:'1234', phone:'0392093021', picture:'pic.jpg' });
+
+- CREAR UNICO NODO MENTOR:
+
+	CREATE (n:Mentor {id:21,name: 'Merio',lastname:'Werio',email:'elmerio@yahoo.com', pass:'1234' });
+
+-CREAR TOPICO
+	CREATE (n:Topic {name:'Algebra' });
+
+- ELIMINAR NODO + TODAS RELACIONES
+	MATCH (n: Mentor {name:'Serveter'})
+	DETACH DELETE n
+
+- UNICA RELACION TOPIC -> CAMPO
+	MATCH (n:Topic {name: "Algebra"})
+	MERGE (m:Field {name: "Matematicas"})
+	CREATE UNIQUE (n) - [:BELONGS_TO] -> (m)
+
+- UNICA RELACION MENTOR TOPICO
+	MATCH (n:Mentor {name: "Serveter"})
+	MERGE (m:Topic {name: "Algebra"})
+	CREATE UNIQUE (n) - [:KNOWS] -> (m)
+
+- CREAR SESION (ADAPTAR PARA PRIMERA VEZ)
+	MATCH (n:Client {name: 'Merio'})
+	MERGE (t:Topic {name:'Algebra'})
+    MERGE (p:Mentor {name: 'Serveter'})
+	MERGE (m:Session {id:0, date:'hoy', start:'00:00', finish: '01:00', status:false, payment:false})
+	CREATE UNIQUE (n) - [:REQUESTS] -> (m) - [:OF] -> (t)
+    CREATE UNIQUE (m) - [:WITH] -> (p);
+
+- INFO MENTOR
+    MATCH (n:Mentor {name:'Welsen'})
+	SET n.rating=0, n.exp=0, n.facebook='link', n.twitter='', n.linkedin='', n.youtube='', n.picture='', n.description='I AM WELSEN', n.degree='', n.institution='', n.phone='1311113232';
+
+- COMENTARIO MENTOR
+	MATCH (n:Mentor {name: "Serveter"})
+	CREATE UNIQUE (n) - [:HAS] -> (m:Comment {content: "IT'S THE GOD OF SPEED"})
+
+- CREAR CONEXION TOPICO NO EXISTENTE
+		MATCH (n:Mentor {email: 't'})
+    MERGE (t:Field {name:'Matematicas'})
+	CREATE UNIQUE (n)-[:KNOWS] -> (m:Topic {name:'Calculo'})-[:BELONGS_TO]->(t)
+
+- CREAR CONEXION TOPICO EXISTENTE
+	MATCH (n:Mentor {email: 't'})
+    MERGE (t:Field {name:'Matematicas'})
+    MERGE (m:Topic {name:'Calculo'})
+	CREATE UNIQUE (n)-[:KNOWS] -> (m)-[:BELONGS_TO]->(t)
+
+
+REGLAS
+- UNICO 
+	CREATE CONSTRAINT ON (n:Mentor) ASSERT n.id IS UNIQUE 
+

@@ -1,0 +1,104 @@
+.divcontainer{
+    padding-bottom:60px;
+    height: calc(100vh - 60px);
+}
+.navbar{
+    margin: 0;
+    padding: 0;
+    background-color: aliceblue;
+}
+.navbarLog{
+    color: dimgrey;
+}
+.navbarLog p{
+    float: left;
+    padding-top: 6px;
+    padding-right: 6px;
+}
+.carousel {
+    width:100%;
+    height:520px;
+    padding: 0;
+    margin: 0;
+}
+.carousel h3{
+    font-size: 40px;
+    color: ghostwhite;
+    text-shadow: 2px 2px black;
+}
+.carousel p{
+    font-size: 20px;
+    color: white;
+    text-shadow: 1px 1px black;
+}
+.carouselContainer{
+    display: flex;
+    width: 100%;
+    height:520px;
+}
+.carouselContainer img{
+    max-width: 100%;
+    margin:auto;
+}
+.footer{
+    color: lightslategrey;
+    height: 200px;
+    background-color: lightsteelblue;
+    /*Keep it down*/
+    position: relative;
+    bottom: 0px;
+    width: 100%;
+
+    /* For center content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.sectionOne{
+    display: flex;
+    width: fit-content;
+    flex-direction: row;
+    padding: 10%;
+    text-align: center;
+    color: lightslategrey;
+}
+.sectionOne section{
+    width: 50%;
+    height: fit-content;
+    align-content: center;
+}
+.sectionOne section img{
+    max-width:100%;
+    max-height:100%;
+}
+.secOne{
+    background-color: lightsteelblue;
+}
+.secTwo{
+    background-color: #becee4;
+}
+.secThree{
+    background-color: #ccd9ea;
+}
+.details{
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.pageHeader{
+    color: darkgrey;
+    padding-left: 5%;
+}
+.logForm{
+    color: darkgrey;
+}
+.formBtn1{
+    color: white;
+    background-color: lightsteelblue;
+}
+.formBtn2{
+    color: darkgrey;
+}
