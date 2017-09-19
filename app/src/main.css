@@ -57,14 +57,16 @@
 }
 .sectionOne{
     display: flex;
-    width: fit-content;
     flex-direction: row;
-    padding: 10%;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 50px;
+    margin-bottom: 50px;
     text-align: center;
     color: lightslategrey;
 }
 .sectionOne section{
-    width: 50%;
+    width: 80%;
     height: fit-content;
     align-content: center;
 }

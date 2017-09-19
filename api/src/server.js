@@ -23,7 +23,7 @@ const middleware = koaWebpack({
 
 app.use(middleware);
 //______________
-app.listen(3000);
+app.listen(3000 || process.env.PORT);
 
 console.log('server will run on localhost:3000');
 
