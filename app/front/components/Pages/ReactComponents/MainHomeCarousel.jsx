@@ -28,7 +28,7 @@ import localStore from '../../../../src/localStore.js'
                     <img src="/carousel-1.png"/>
                   </div>
                 <Carousel.Caption>
-                  <h3>Look at mee!</h3>
+                  <h3>---</h3>
                 </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
@@ -36,7 +36,7 @@ import localStore from '../../../../src/localStore.js'
                     <img src="carousel-2.png"/>
                   </div>
                 <Carousel.Caption>
-                  <h3>Ooh wee!!</h3>
+                  <h3>---</h3>
                 </Carousel.Caption>
               </Carousel.Item>
             </Carousel>

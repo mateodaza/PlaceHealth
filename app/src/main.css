@@ -67,6 +67,7 @@
 }
 .sectionOne section{
     width: 80%;
+    /*height: fit-content;*/
     height: fit-content;
     align-content: center;
 }
@@ -76,12 +77,19 @@
 }
 .secOne{
     background-color: lightsteelblue;
+    height: 80%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 .secTwo{
     background-color: #becee4;
+    height: 80%;
 }
 .secThree{
     background-color: #ccd9ea;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    height: 80px;
 }
 .details{
     color: #fff;
@@ -103,4 +111,8 @@
 }
 .formBtn2{
     color: darkgrey;
+}
+.searchResults{
+    padding-left: 5%;
+    padding-right: 5%;
 }

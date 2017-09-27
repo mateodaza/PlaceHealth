@@ -4,7 +4,10 @@ import { LinkContainer } from 'react-router-bootstrap';
 import Navbar from '../ReactComponents/MainHomeNavbar.jsx';
 import Footer from '../ReactComponents/MainHomeFooter.jsx';
 
-export default class Login extends React.Component {
+import { observer } from 'mobx-react';
+import localStore from '../../../../src/localStore.js'
+
+@observer export default class Login extends React.Component {
 
     constructor(){
         super();
@@ -12,6 +15,29 @@ export default class Login extends React.Component {
             email: '',
             pass: '',
         };
+    }
+
+    handleEmailChange(e) {
+        this.setState({email: e.target.value});
+    }
+    handlePasswordChange(e) {
+        this.setState({pass: e.target.value});
+    }
+
+    login(event){
+        event.preventDefault();
+        //Check authentication from database, if true generate token.
+
+       // localStore.dispose();  //To clean the store
+        // localStore.reset();   //To reset default values
+
+        let token = this.state.pass;
+        if(localStore.sessionToken == token){
+            //allow stuff
+            alert("authenticated?");
+        }else{
+            alert('fuckoffm8');
+        }
     }
 
     render() {
@@ -26,7 +52,7 @@ export default class Login extends React.Component {
                                 Email
                             </Col>
                             <Col sm={10} md={4}>
-                                <FormControl type="email" placeholder="Email" value={this.state.email}/>
+                                <FormControl type="email" placeholder="Email" value={this.state.email} onChange={this.handleEmailChange.bind(this)}/>
                             </Col>
                         </FormGroup>
 
@@ -35,18 +61,18 @@ export default class Login extends React.Component {
                                 Password
                             </Col>
                             <Col sm={10} md={4}>
-                                <FormControl type="password" placeholder="Password" value={this.state.pass}/>
+                                <FormControl type="password" placeholder="Password" value={this.state.pass} onChange={this.handlePasswordChange.bind(this)}/>
                             </Col>
                         </FormGroup>
 
                         <FormGroup>
                             <Col smOffset={2} sm={10}>
                                 <ButtonToolbar>
-                                    <Button bsStyle="custom" type="submit" className="formBtn1">
+                                    <Button type="submit" className="formBtn1" onClick={this.login.bind(this)}>
                                         Log in
                                     </Button>
                                     <LinkContainer to="#">
-                                        <Button bsStyle="custom" type="submit" className="formBtn2" >
+                                        <Button type="submit" className="formBtn2" >
                                             or Sign up!
                                         </Button>
                                     </LinkContainer>
