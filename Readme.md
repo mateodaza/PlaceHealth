@@ -20,7 +20,7 @@ insert description here
 
 ### Installation
 
-Requires [Node.js](https://nodejs.org/) v6+ to run.
+Requires [Node.js](https://nodejs.org/) v7+ to run.
 
 Install the dependencies.
 
