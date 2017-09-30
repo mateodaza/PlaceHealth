@@ -27,7 +27,7 @@ const people = [{
     desc: "Nyan."
 }, {
     background: '#a0b2c9',
-    imgSrc: 'https://petful.supercopyeditors.netdna-cdn.com/wp-content/uploads/2012/06/why-is-cat-scared-rain-thunder.png',
+    imgSrc: 'https://cmeimg-a.akamaihd.net/640/cme/cuteness_data/s3fs-public/diy_blog/What-is-a-Blep-Murphy.jpg',
     imgBorderColor: '#a0b2c9',
     name: 'Blep\'n cut',
     title: 'Surgery',

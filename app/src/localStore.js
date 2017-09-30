@@ -4,6 +4,7 @@ const defaultUser = {
 
     navSearchItem : '',
     sessionToken : 1011,
+    isLogged: false,
 
 };
 

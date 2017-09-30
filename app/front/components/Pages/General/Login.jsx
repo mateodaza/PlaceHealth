@@ -1,11 +1,13 @@
 import React from 'react';
 import { PageHeader, Form, FormGroup, FormControl, ControlLabel, Col, Button, ButtonToolbar} from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { Redirect } from 'react-router-dom'
 import Navbar from '../ReactComponents/MainHomeNavbar.jsx';
 import Footer from '../ReactComponents/MainHomeFooter.jsx';
 
 import { observer } from 'mobx-react';
 import localStore from '../../../../src/localStore.js'
+import auth from '../../../../src/auth.js';
 
 @observer export default class Login extends React.Component {
 
@@ -27,16 +29,12 @@ import localStore from '../../../../src/localStore.js'
     login(event){
         event.preventDefault();
         //Check authentication from database, if true generate token.
-
-       // localStore.dispose();  //To clean the store
+        // localStore.dispose();  //To clean the store
         // localStore.reset();   //To reset default values
-
-        let token = this.state.pass;
-        if(localStore.sessionToken == token){
-            //allow stuff
+        if(auth.loggedIn(this.state.pass)){
             alert("authenticated?");
-        }else{
-            alert('fuckoffm8');
+            localStore.isLogged = true;
+            window.location.replace("/#/auth");
         }
     }
 
@@ -68,9 +66,11 @@ import localStore from '../../../../src/localStore.js'
                         <FormGroup>
                             <Col smOffset={2} sm={10}>
                                 <ButtonToolbar>
-                                    <Button type="submit" className="formBtn1" onClick={this.login.bind(this)}>
-                                        Log in
-                                    </Button>
+                                    <LinkContainer to="#">
+                                        <Button type="submit" className="formBtn1" onClick={this.login.bind(this)}>
+                                            Log in
+                                        </Button>
+                                    </LinkContainer>
                                     <LinkContainer to="#">
                                         <Button type="submit" className="formBtn2" >
                                             or Sign up!

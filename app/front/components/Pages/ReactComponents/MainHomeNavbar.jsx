@@ -5,7 +5,9 @@ import MdAccountCircle from 'react-icons/lib/md/account-circle';
 import MdSearch from 'react-icons/lib/md/search';
 
 import { observer } from 'mobx-react';
-import localStore from '../../../../src/localStore.js'
+import localStore from '../../../../src/localStore.js';
+
+import auth from '../../../../src/auth.js';
 
 @observer export default class MainHomeNavbar extends React.Component {
     constructor(){
@@ -21,6 +23,10 @@ import localStore from '../../../../src/localStore.js'
 
     search(){
         localStore.navSearchItem = this.state.searchItem;
+    }
+
+    logout(){
+        localStore.reset();   //To reset default values
     }
 
     render() {
@@ -42,15 +48,35 @@ import localStore from '../../../../src/localStore.js'
                         <MenuItem divider />
                         <MenuItem eventKey={2.4}>Separated link</MenuItem>
                     </NavDropdown>
+                    {
+                        localStore.isLogged && (   //Change this token plz.
+                            <LinkContainer to={'/auth'}>
+                                <NavItem eventKey={3}>Dashboard</NavItem>
+                            </LinkContainer>
+                        )
+                    }
                 </Nav>
-                <LinkContainer to={'/login'}>
-                    <Navbar.Form pullRight className="navbarLog">
-                        <a href="#">
-                            <p>Login</p>
-                            <MdAccountCircle size={34} color='lightsteelblue'/>
-                        </a>
-                    </Navbar.Form>
-                </LinkContainer>
+                {
+                    localStore.isLogged ? (
+                        <LinkContainer to={'/'}>
+                            <Navbar.Form pullRight className="navbarLog">
+                                <a href="#" onClick={this.logout.bind(this)}>
+                                    <p>Logout</p>
+                                    <MdAccountCircle size={34} color='lightsteelblue'/>
+                                </a>
+                            </Navbar.Form>
+                        </LinkContainer>
+                    ): (
+                        <LinkContainer to={'/login'}>
+                            <Navbar.Form pullRight className="navbarLog">
+                                <a href="#" >
+                                    <p>Login</p>
+                                    <MdAccountCircle size={34} color='lightsteelblue'/>
+                                </a>
+                            </Navbar.Form>
+                        </LinkContainer>
+                    )
+                }
 
                 <Navbar.Form pullRight>
                     <FormGroup>

@@ -9,7 +9,7 @@ import NotFound from './components/Pages/General/NotFound.jsx';
 import About from './components/Pages/General/About.jsx';
 import Login from './components/Pages/General/Login.jsx';
 import Search from './components/Pages/ReactComponents/SearchResult.jsx';
-import Auth from './components/Pages/General/AuthTest.jsx';
+import Auth from './components/Pages/General/Dashboard.jsx';
 
 @observer export default class App extends React.Component {
   constructor(){

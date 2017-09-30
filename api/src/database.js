@@ -1,7 +1,7 @@
 var db = require("seraph")({
-  server: "http://hobby-cbadkcgfojekgbkeejkcbfol.dbs.graphenedb.com:24789",
+  server: "http://hobby-ndeieofkojekgbkegcodabpl.dbs.graphenedb.com:24789",
   user: "dev",
-  pass: "b.2sYa0wg4WqSk.dbpVgMOiB7V9ur8l"
+  pass: "b.B4SYKeXLIKi1.8ZjC0olf0ZKnTy65"
 });
 
 export default db;

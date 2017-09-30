@@ -9,7 +9,7 @@ export default class AuthTest extends React.Component {
             <div>
                 <Navbar />
                 <div className="divcontainer">
-                    <PageHeader className="pageHeader"> Authenticated Page </PageHeader>
+                    <PageHeader className="pageHeader">Dashboard</PageHeader>
                 </div>
                 <Footer />
             </div>
