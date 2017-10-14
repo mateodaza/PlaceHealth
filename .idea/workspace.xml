@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ebbb5d4-6a90-4402-9c80-05731aec2c03" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/MainHomeSectionTwo.jsx" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/front/components/Pages/General/About.jsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/CuteFeed.jsx" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/MainHomeFooter.jsx" afterPath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/Footer.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/MainHomeNavbar.jsx" afterPath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/Navbar.jsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/front/components/Pages/General/Dashboard.jsx" afterPath="$PROJECT_DIR$/app/front/components/Pages/General/Dashboard.jsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/front/components/Pages/General/Home.jsx" afterPath="$PROJECT_DIR$/app/front/components/Pages/General/Home.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/front/components/Pages/General/Login.jsx" afterPath="$PROJECT_DIR$/app/front/components/Pages/General/Login.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/MainHomeSectionOne.jsx" afterPath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/MainHomeSectionOne.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/SearchResult.jsx" afterPath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/SearchResult.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/front/index.jsx" afterPath="$PROJECT_DIR$/app/front/index.jsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main.css" afterPath="$PROJECT_DIR$/app/src/main.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
     </list>
@@ -29,36 +19,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Home.jsx" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Home.jsx" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/front/components/Pages/General/Home.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+            <state relative-caret-position="238">
+              <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainHomeSectionOne.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/front/components/Pages/ReactComponents/MainHomeSectionOne.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-9">
-              <caret line="18" column="51" lean-forward="false" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="88" column="26" lean-forward="false" selection-start-line="88" selection-start-column="26" selection-end-line="88" selection-end-column="26" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -118,9 +86,9 @@
         <option value="$PROJECT_DIR$/app/front/index.jsx" />
         <option value="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/SearchResult.jsx" />
         <option value="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/MainHomeSectionTwo.jsx" />
-        <option value="$PROJECT_DIR$/app/front/components/Pages/General/Home.jsx" />
         <option value="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/MainHomeSectionOne.jsx" />
         <option value="$PROJECT_DIR$/app/src/main.css" />
+        <option value="$PROJECT_DIR$/app/front/components/Pages/General/Home.jsx" />
       </list>
     </option>
   </component>
@@ -282,12 +250,12 @@
       <workItem from="1506549663324" duration="3000" />
       <workItem from="1506697497251" duration="11495000" />
       <workItem from="1507919411370" duration="4405000" />
-      <workItem from="1507990133918" duration="16267000" />
+      <workItem from="1507990133918" duration="18574000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106791000" />
+    <option name="totallyTimeSpent" value="109098000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="53" y="23" width="1213" height="777" extended-state="0" />
@@ -593,7 +561,7 @@
         <state relative-caret-position="45">
           <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -628,16 +596,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/front/components/Pages/ReactComponents/MainHomeSectionOne.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
-          <caret line="18" column="51" lean-forward="false" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/front/components/Pages/ReactComponents/MainHomeSectionTwo.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -648,10 +606,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/front/components/Pages/General/Home.jsx">
+    <entry file="file://$PROJECT_DIR$/app/front/components/Pages/ReactComponents/MainHomeSectionOne.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        <state relative-caret-position="51">
+          <caret line="22" column="60" lean-forward="false" selection-start-line="22" selection-start-column="60" selection-end-line="22" selection-end-column="60" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -660,9 +618,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="88" column="26" lean-forward="false" selection-start-line="88" selection-start-column="26" selection-end-line="88" selection-end-column="26" />
+        <state relative-caret-position="258">
+          <caret line="106" column="16" lean-forward="false" selection-start-line="106" selection-start-column="16" selection-end-line="106" selection-end-column="16" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/front/components/Pages/General/Home.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

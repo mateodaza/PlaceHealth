@@ -103,6 +103,11 @@ body {
     padding-left: 5%;
     text-align: center;
 }
+.sectionContent{
+    color: grey;
+    padding: 20%;
+    text-align: center;
+}
 .logForm{
     color: darkgrey;
 }
