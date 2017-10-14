@@ -1,6 +1,6 @@
 # Place Health
 
-insert description here
+Es una plataforma web permite realizar solicitudes de servicios con IPS y consultas directamente con un médico especializado.
 
 # In development!
 
