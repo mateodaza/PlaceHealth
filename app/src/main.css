@@ -1,11 +1,23 @@
-.divcontainer{
+body {
+    height: 100%;
+    position: relative;
+}
+.divContainer{
+    height: 100vh;
     padding-bottom:60px;
-    height: calc(100vh - 60px);
 }
 .navbar{
     margin: 0;
     padding: 0;
-    background-color: aliceblue;
+    width: 100%;
+    background-color: transparent;
+    border-color:transparent;
+}
+.homeNavbar{
+    position: fixed;
+    width: 100%;
+    background-color: transparent;
+    border-color:transparent;
 }
 .navbarLog{
     color: dimgrey;
@@ -44,9 +56,10 @@
     color: lightslategrey;
     height: 200px;
     background-color: lightsteelblue;
+
     /*Keep it down*/
     position: relative;
-    bottom: 0px;
+    bottom: 0;
     width: 100%;
 
     /* For center content */
@@ -55,52 +68,40 @@
     align-items: center;
     justify-content: center;
 }
+
+/*SECTION ONE*/
 .sectionOne{
     display: flex;
     flex-direction: row;
     margin-left: 25px;
     margin-right: 25px;
-    margin-top: 50px;
+    margin-top: 25px;
     margin-bottom: 50px;
     text-align: center;
     color: lightslategrey;
 }
 .sectionOne section{
-    width: 80%;
+    width: 100%;
+    min-width: 0;
     /*height: fit-content;*/
+    padding: 10px;
     height: fit-content;
     align-content: center;
 }
-.sectionOne section img{
-    max-width:100%;
-    max-height:100%;
-}
-.secOne{
-    background-color: lightsteelblue;
-    height: 80%;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
-.secTwo{
-    background-color: #becee4;
-    height: 80%;
-}
-.secThree{
-    background-color: #ccd9ea;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    height: 80px;
-}
-.details{
-    color: #fff;
+.subSection{
+    height: 100vh;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: center
 }
 .pageHeader{
     color: darkgrey;
     padding-left: 5%;
+}
+.sectionHeader{
+    color: darkgrey;
+    padding-top: 2%;
+    padding-left: 5%;
+    text-align: center;
 }
 .logForm{
     color: darkgrey;
@@ -115,4 +116,8 @@
 .searchResults{
     padding-left: 5%;
     padding-right: 5%;
+}
+.cardImg{
+    width:100%;
+    border-radius:2px 2px 0px 0px;
 }

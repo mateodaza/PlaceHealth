@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageHeader} from 'react-bootstrap';
-import Navbar from '../ReactComponents/MainHomeNavbar.jsx';
-import Footer from '../ReactComponents/MainHomeFooter.jsx';
+import Navbar from '../ReactComponents/Navbar.jsx';
+import Footer from '../ReactComponents/Footer.jsx';
 
 export default class AuthTest extends React.Component {
     render() {

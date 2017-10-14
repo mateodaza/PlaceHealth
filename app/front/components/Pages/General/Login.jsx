@@ -2,8 +2,9 @@ import React from 'react';
 import { PageHeader, Form, FormGroup, FormControl, ControlLabel, Col, Button, ButtonToolbar} from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Redirect } from 'react-router-dom'
-import Navbar from '../ReactComponents/MainHomeNavbar.jsx';
-import Footer from '../ReactComponents/MainHomeFooter.jsx';
+import Navbar from '../ReactComponents/Navbar.jsx';
+import Footer from '../ReactComponents/Footer.jsx';
+import Sticky from 'react-stickynode';
 
 import { observer } from 'mobx-react';
 import localStore from '../../../../src/localStore.js'
@@ -41,8 +42,8 @@ import auth from '../../../../src/auth.js';
     render() {
         return (
             <div>
-                <Navbar />
-                <div className="divcontainer">
+                <Navbar type="navbar"/>
+                <div className="divContainer">
                     <PageHeader className="pageHeader"> Login </PageHeader>
                     <Form horizontal className="logForm">
                         <FormGroup controlId="formHorizontalEmail">
@@ -81,7 +82,6 @@ import auth from '../../../../src/auth.js';
                         </FormGroup>
                     </Form>
                 </div>
-                <Footer />
             </div>
         );
     }
