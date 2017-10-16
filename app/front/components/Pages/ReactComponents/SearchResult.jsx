@@ -20,7 +20,7 @@ let results = [{
     render() {
         return (
             <div className="divContainer">
-                <Navbar type="navbar"/>
+                <Navbar type="navbar loginNavbar"/>
                 <PageHeader className="pageHeader"> Results for <q>{localStore.navSearchItem}</q> </PageHeader>
 
                 <Accordion className="searchResults">
