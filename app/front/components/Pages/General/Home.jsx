@@ -19,10 +19,10 @@ import SectionTwo from '../ReactComponents/MainHomeSectionTwo.jsx';
               <Navbar type="homeNavbar"/>
           </Sticky>
           <video  id="background-video" preload autoPlay loop  style={{opacity:1, width: '100%'}}>
-              <source src="./Falling-leaf/Falling-leaf.webm" type="video/webm" />
-              <source src="./Falling-leaf/Falling-leaf.ogv" type="video/ogv" />
-              <source src="./Falling-leaf/Falling-leaf.mp4" type="video/mp4" />
-              <img alt="no video support" src="./Falling-leaf/Falling-leaf.jpg"/>
+              <source src="./Falling-leaf/Falling-Leaf.webm" type="video/webm" />
+              <source src="./Falling-leaf/Falling-Leaf.ogv" type="video/ogv" />
+              <source src="./Falling-leaf/Falling-Leaf.mp4" type="video/mp4" />
+              <img alt="no video support" src="./Falling-leaf/Falling-Leaf.jpg"/>
           </video>
           <div className="overlay">
               <h1>Making the world a better place. </h1>

@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ebbb5d4-6a90-4402-9c80-05731aec2c03" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/front/components/Pages/General/Home.jsx" afterPath="$PROJECT_DIR$/app/front/components/Pages/General/Home.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/front/components/Pages/General/Login.jsx" afterPath="$PROJECT_DIR$/app/front/components/Pages/General/Login.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/MainHomeSectionOne.jsx" afterPath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/MainHomeSectionOne.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/Navbar.jsx" afterPath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/Navbar.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/front/index.html" afterPath="$PROJECT_DIR$/app/front/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main.css" afterPath="$PROJECT_DIR$/app/src/main.css" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -34,12 +28,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/front/index.html">
+      <file leaf-file-name="Home.jsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/front/components/Pages/General/Home.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="75" lean-forward="false" selection-start-line="3" selection-start-column="75" selection-end-line="3" selection-end-column="75" />
-              <folding />
+            <state relative-caret-position="196">
+              <caret line="24" column="71" lean-forward="false" selection-start-line="24" selection-start-column="71" selection-end-line="24" selection-end-column="71" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -97,12 +93,12 @@
         <option value="$PROJECT_DIR$/app/front/index.jsx" />
         <option value="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/SearchResult.jsx" />
         <option value="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/MainHomeSectionTwo.jsx" />
-        <option value="$PROJECT_DIR$/app/front/components/Pages/General/Home.jsx" />
         <option value="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/MainHomeSectionOne.jsx" />
         <option value="$PROJECT_DIR$/app/front/components/Pages/General/Login.jsx" />
         <option value="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/Navbar.jsx" />
         <option value="$PROJECT_DIR$/app/front/index.html" />
         <option value="$PROJECT_DIR$/app/src/main.css" />
+        <option value="$PROJECT_DIR$/app/front/components/Pages/General/Home.jsx" />
       </list>
     </option>
   </component>
@@ -269,12 +265,12 @@
       <workItem from="1507919411370" duration="4405000" />
       <workItem from="1507990133918" duration="18574000" />
       <workItem from="1508104201141" duration="5371000" />
-      <workItem from="1508179519489" duration="5002000" />
+      <workItem from="1508179519489" duration="5452000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119471000" />
+    <option name="totallyTimeSpent" value="119921000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="53" y="23" width="1213" height="777" extended-state="0" />
@@ -599,31 +595,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/front/components/Pages/General/Home.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="27" column="52" lean-forward="false" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/front/components/Pages/General/Login.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="45" column="16" lean-forward="true" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/front/components/Pages/ReactComponents/Navbar.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="44" column="84" lean-forward="false" selection-start-line="44" selection-start-column="84" selection-end-line="44" selection-end-column="84" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -640,6 +616,26 @@
         <state relative-caret-position="45">
           <caret line="3" column="75" lean-forward="false" selection-start-line="3" selection-start-column="75" selection-end-line="3" selection-end-column="75" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/front/components/Pages/ReactComponents/Navbar.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="44" column="84" lean-forward="false" selection-start-line="44" selection-start-column="84" selection-end-line="44" selection-end-column="84" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/front/components/Pages/General/Home.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="24" column="71" lean-forward="false" selection-start-line="24" selection-start-column="71" selection-end-line="24" selection-end-column="71" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
