@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, FormGroup, FormControl, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import MdAccountCircle from 'react-icons/lib/md/account-circle';
+import MdAccountBox from 'react-icons/lib/md/account-box';
 import MdSearch from 'react-icons/lib/md/search';
 
 import { observer } from 'mobx-react';
@@ -35,9 +35,15 @@ import auth from '../../../../src/auth.js';
                 <Navbar>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <a href="#">PlaceHealth</a>
+                            <a href="#" style={{color:'whitesmoke'}}> <strong>PlaceHealth</strong></a>
                         </Navbar.Brand>
                     </Navbar.Header>
+                    <Navbar.Brand >
+                        <a href="#" style={{color:'whitesmoke', opacity:0.8}}>Services</a>
+                    </Navbar.Brand>
+                    <Navbar.Brand>
+                        <a href="#" style={{color:'whitesmoke' , opacity:0.8}}>About</a>
+                    </Navbar.Brand>
                     <Nav >
                         {
                             localStore.isLogged && (   //Change this token plz.
@@ -53,16 +59,16 @@ import auth from '../../../../src/auth.js';
                                 <Navbar.Form pullRight className="navbarLog">
                                     <a href="#" onClick={this.logout.bind(this)}>
                                         <p>Logout</p>
-                                        <MdAccountCircle size={34} color='lightsteelblue'/>
+                                        <MdAccountBox size={34} color='whitesmoke'/>
                                     </a>
                                 </Navbar.Form>
                             </LinkContainer>
                         ): (
                             <LinkContainer to={'/login'}>
                                 <Navbar.Form pullRight className="navbarLog">
-                                    <a href="#" >
+                                    <a href="#" style={{color: 'whitesmoke'}}>
                                         <p>Login</p>
-                                        <MdAccountCircle size={34} color='lightsteelblue'/>
+                                        <MdAccountBox size={34} color='whitesmoke'/>
                                     </a>
                                 </Navbar.Form>
                             </LinkContainer>
@@ -83,7 +89,7 @@ import auth from '../../../../src/auth.js';
                             {' '}
                             <LinkContainer to={'/search'}>
                                 <a onClick={this.search.bind(this)}>
-                                    <MdSearch size={22} />
+                                    <MdSearch size={22} color='whitesmoke'/>
                                 </a>
                             </LinkContainer>
                         </FormGroup>

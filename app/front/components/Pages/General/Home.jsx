@@ -15,13 +15,19 @@ import SectionTwo from '../ReactComponents/MainHomeSectionTwo.jsx';
   render() {
     return (
       <div>
-          <Sticky enabled={true} bottomBoundary={710}>
+          <Sticky enabled={true} bottomBoundary={652}>
               <Navbar type="homeNavbar"/>
           </Sticky>
-          <video  id="background-video" preload autoPlay loop width={'100%'} height={690}>
-              <source src="https://i.imgur.com/uy2KVZg.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
+          <video  id="background-video" preload autoPlay loop  style={{opacity:1, width: '100%'}}>
+              <source src="./Falling-leaf/Falling-leaf.webm" type="video/webm" />
+              <source src="./Falling-leaf/Falling-leaf.ogv" type="video/ogv" />
+              <source src="./Falling-leaf/Falling-leaf.mp4" type="video/mp4" />
+              <img alt="no video support" src="./Falling-leaf/Falling-leaf.jpg"/>
           </video>
+          <div className="overlay">
+              <h1>Making the world a better place. </h1>
+          </div>
+
           <h1 className="sectionHeader"> Medical Health Services </h1>
           <SectionOne />
           <Parallax bgImage="./carousel-2.png" strength={400}>

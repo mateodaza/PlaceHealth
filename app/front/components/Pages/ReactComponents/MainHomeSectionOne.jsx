@@ -14,7 +14,8 @@ import localStore from '../../../../src/localStore.js'
                 <section >
                     <Card
                         onOver={card => card.setLevel(2) }
-                        onOut={card => card.setLevel(1)}>
+                        onOut={card => card.setLevel(1)}
+                    >
                         <img className="cardImg" src='https://chiefexecutive.net/wp-content/uploads/2016/11/GettyImages-508508902.jpg' />
                         <div style={{margin: '2px', height: 'auto', minHeight: '15vh'}}>
                             <h3>Professionals</h3>

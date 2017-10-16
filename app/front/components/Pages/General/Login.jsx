@@ -42,7 +42,7 @@ import auth from '../../../../src/auth.js';
     render() {
         return (
             <div>
-                <Navbar type="navbar"/>
+                <Navbar type="navbar loginNavbar"/>
                 <div className="divContainer">
                     <PageHeader className="pageHeader"> Login </PageHeader>
                     <Form horizontal className="logForm">
