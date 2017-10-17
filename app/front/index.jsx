@@ -10,6 +10,7 @@ import Login from './components/Pages/General/Login.jsx';
 import Search from './components/Pages/ReactComponents/SearchResult.jsx';
 import Footer from './components/Pages/ReactComponents/Footer.jsx';
 import Auth from './components/Pages/General/Dashboard.jsx';
+import SignUp from './components/Pages/General/SignUp.jsx';
 
 
 @observer export default class App extends React.Component {
@@ -33,6 +34,7 @@ import Auth from './components/Pages/General/Dashboard.jsx';
             <Route exact path="/" component={Home}/>
             <Route path='/login' component={Login}/>
             <Route path='/search' component={Search}/>
+            <Route path='/signup' component={SignUp}/>
             <Route path="/auth" render={() => (
                 this.loggedIn() ? (
                     <Auth/>

@@ -24,6 +24,7 @@ import SectionTwo from '../ReactComponents/MainHomeSectionTwo.jsx';
               <source src="./Falling-Leaf/Falling-Leaf.mp4" type="video/mp4" />
               <img alt="no video support" src="./Falling-Leaf/Falling-Leaf.jpg"/>
           </video>
+
           <div className="overlay">
               <h1>Making the world a better place. </h1>
           </div>

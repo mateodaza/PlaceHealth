@@ -1,10 +1,7 @@
 import React from 'react';
 import { PageHeader, Form, FormGroup, FormControl, ControlLabel, Col, Button, ButtonToolbar} from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Redirect } from 'react-router-dom'
 import Navbar from '../ReactComponents/Navbar.jsx';
-import Footer from '../ReactComponents/Footer.jsx';
-import Sticky from 'react-stickynode';
 
 import { observer } from 'mobx-react';
 import localStore from '../../../../src/localStore.js'
@@ -20,11 +17,10 @@ import auth from '../../../../src/auth.js';
         };
     }
 
-    handleEmailChange(e) {
-        this.setState({email: e.target.value});
-    }
-    handlePasswordChange(e) {
-        this.setState({pass: e.target.value});
+    handleChange(e) {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
     }
 
     login(event){
@@ -43,15 +39,17 @@ import auth from '../../../../src/auth.js';
         return (
             <div>
                 <Navbar type="navbar loginNavbar"/>
+
                 <div className="divContainer">
                     <PageHeader className="pageHeader"> Login </PageHeader>
                     <Form horizontal className="logForm">
+
                         <FormGroup controlId="formHorizontalEmail">
                             <Col componentClass={ControlLabel} sm={2}>
                                 Email
                             </Col>
                             <Col sm={10} md={4}>
-                                <FormControl type="email" placeholder="Email" value={this.state.email} onChange={this.handleEmailChange.bind(this)}/>
+                                <FormControl type="email" name="email" placeholder="Email" value={this.state.email} onChange={this.handleChange.bind(this)}/>
                             </Col>
                         </FormGroup>
 
@@ -60,10 +58,9 @@ import auth from '../../../../src/auth.js';
                                 Password
                             </Col>
                             <Col sm={10} md={4}>
-                                <FormControl type="password" placeholder="Password" value={this.state.pass} onChange={this.handlePasswordChange.bind(this)}/>
+                                <FormControl type="password" name="pass" placeholder="Password" value={this.state.pass} onChange={this.handleChange.bind(this)}/>
                             </Col>
                         </FormGroup>
-
                         <FormGroup>
                             <Col smOffset={2} sm={10}>
                                 <ButtonToolbar>
@@ -72,8 +69,8 @@ import auth from '../../../../src/auth.js';
                                             Log in
                                         </Button>
                                     </LinkContainer>
-                                    <LinkContainer to="#">
-                                        <Button type="submit" className="formBtn2" >
+                                    <LinkContainer to="/signup">
+                                        <Button type="submit" className="formBtn2">
                                             or Sign up!
                                         </Button>
                                     </LinkContainer>
