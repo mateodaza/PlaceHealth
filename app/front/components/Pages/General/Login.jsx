@@ -28,6 +28,7 @@ import auth from '../../../../src/auth.js';
         //Check authentication from database, if true generate token.
         // localStore.dispose();  //To clean the store
         // localStore.reset();   //To reset default values
+        localStore.isLogged = true;
         if(auth.loggedIn(this.state.pass)){
             alert("authenticated?");
             localStore.isLogged = true;

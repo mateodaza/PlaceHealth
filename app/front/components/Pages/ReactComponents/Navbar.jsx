@@ -57,7 +57,7 @@ import auth from '../../../../src/auth.js';
                         localStore.isLogged ? (
                             <LinkContainer to={'/'}>
                                 <Navbar.Form pullRight className="navbarLog">
-                                    <a href="#" onClick={this.logout.bind(this)}>
+                                    <a href="#" style={{color: 'whitesmoke'}} onClick={this.logout.bind(this)}>
                                         <p>Logout</p>
                                         <MdAccountBox size={34} color='whitesmoke'/>
                                     </a>

@@ -26,7 +26,7 @@ import SectionTwo from '../ReactComponents/MainHomeSectionTwo.jsx';
           </video>
 
           <div className="overlay">
-              <h1>Making the world a better place. </h1>
+              <h1>Live Well.</h1>
           </div>
 
           <h1 className="sectionHeader"> Medical Health Services </h1>
@@ -38,7 +38,7 @@ import SectionTwo from '../ReactComponents/MainHomeSectionTwo.jsx';
           <SectionTwo />
           <Parallax bgImage="./carousel-1.png" strength={400}>
               <div style={{height: '80vh'}}>
-                  <h3 className="sectionContent"> THATS ALL FOLKS </h3>
+                  <h3 className="sectionContent">  </h3>
               </div>
           </Parallax>
       </div>

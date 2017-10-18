@@ -25,6 +25,7 @@ body {
     padding: 0;
     border-radius: 0;
     width: 100%;
+    font-size: 1em;
     background-color: transparent;
     border-color: transparent;
 }
@@ -71,7 +72,7 @@ body {
     margin:auto;
 }
 .footer{
-    color: lightslategrey;
+    color: whitesmoke;
     height: 20em;
     background-color: rgba(10,42,79,0.8);
 
@@ -93,10 +94,7 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-left: 25px;
-    margin-right: 25px;
-    margin-top: 25px;
-    margin-bottom: 50px;
+    margin: 25px;
     text-align: center;
     color: lightslategrey;
 }
@@ -111,7 +109,10 @@ body {
 .subSection{
     height: 100vh;
     display: flex;
-    align-items: center
+    width: 50vw;
+    margin-top: 0;
+    margin-left: 5em;
+    align-items: center;
 }
 .pageHeader{
     color: darkgrey;

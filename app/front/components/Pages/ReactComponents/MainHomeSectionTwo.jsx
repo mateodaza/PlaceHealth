@@ -11,20 +11,22 @@ import localStore from '../../../../src/localStore.js'
             <div className="sectionOne">
                 <section >
                     <div className="subSection">
-                        <h3>more info</h3>
+                        <h2> You can feel comfortable knowing that you&rsquo;re getting the best care available,
+                            with a commitment to service, and all the luxuries of a state-of-the-art centre.
+                            Expect a truly great experience. </h2>
                     </div>
                 </section>
-                <section >
+                <section style={{backgroundColor: 'rgba(10,42,79,0.8)', color: 'whitesmoke', paddingTop:'0', paddingBottom:'2em', paddingLeft:'2em', paddingRight:'2em'}}>
                     <h3>News</h3>
                     <Timeline
                         dataSource={{
                             sourceType: 'profile',
-                            screenName: 'DoctorCatMd'
+                            screenName: 'IntegrahealthTO'
                         }}
                         options={{
-                            username: 'doctorcatmd',
-                            height: '514',
-                            padding: 'px'
+                            username: 'IntegrahealthTO',
+                            height: '720',
+                            padding: 'em'
                         }}
                         onLoad={() => console.log('Timeline is loaded!')}
                     />
