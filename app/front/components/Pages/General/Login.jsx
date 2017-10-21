@@ -6,6 +6,10 @@ import Navbar from '../ReactComponents/Navbar.jsx';
 import { observer } from 'mobx-react';
 import localStore from '../../../../src/localStore.js'
 import auth from '../../../../src/auth.js';
+import bcrypt from 'bcryptjs';
+
+//Database
+import dbuser from '../../../../../api/src/models/users.js';
 
 @observer export default class Login extends React.Component {
 
@@ -28,7 +32,16 @@ import auth from '../../../../src/auth.js';
         //Check authentication from database, if true generate token.
         // localStore.dispose();  //To clean the store
         // localStore.reset();   //To reset default values
-        localStore.isLogged = true;
+        let user = new dbuser();
+        let password = this.state.pass;
+        user.findDoctor(this.state.email, function (data){
+            console.log(data);
+            bcrypt.compare(password, data.pass, function(err, res) {
+                alert(res);
+                localStore.isLogged = true;
+            });
+        });
+
         if(auth.loggedIn(this.state.pass)){
             alert("authenticated?");
             localStore.isLogged = true;

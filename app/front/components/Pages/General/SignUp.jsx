@@ -7,6 +7,8 @@ import bcrypt from 'bcryptjs';
 import { observer } from 'mobx-react';
 import localStore from '../../../../src/localStore.js'
 import auth from '../../../../src/auth.js';
+//Database
+import user from '../../../../../api/src/models/users.js';
 
 @observer export default class SignUp extends React.Component {
 
@@ -17,6 +19,7 @@ import auth from '../../../../src/auth.js';
             pass: '',
             pass2: '',
             specialty: '',
+            name: '',
             type: 0,
             notValidated: true
         };
@@ -35,19 +38,42 @@ import auth from '../../../../src/auth.js';
     signUp(e){
         e.preventDefault();
         let pass = this.state.pass;
+        let name = this.state.name;
+        let email = this.state.email;
+        let type = this.state.type;
+        let docRegist = this.docRegist;
+
         if(this.state.pass === this.state.pass2){
             bcrypt.hash(pass, 8, function(err, hash) {
                 alert("This is your encrypted password: "+ hash + ". Now imagine that you just signed up. Enjoy.");
-                bcrypt.compare("1234", hash, function(err, res) {
+                /*bcrypt.compare("1234", hash, function(err, res) {
                     alert(res);
                 });
+                */
+                if(email !=='' && name !==''){
+                    if(Number(type) === 1){  //1= doctor, 2=center
+                        //Registration Doctor
+                        let doctor = new user();
+                        let id = new Date().getTime();
+                        doctor.createDoctor(id, name, email, hash, function (data){
+                            if(typeof data !== 'undefined'){
+                                alert('Success!');
+                            } else{
+                                alert('Sorry, I cannot do that.');
+                            }
+                        });
+                    }else{
+                        alert("Soon");
+                    }
+                }else{
+                    alert("Please fill all fields.");
+                }
             });
         }else{
             alert("Please verify your password.");
             this.setState({pass: '', pass2: ''});
         }
     }
-
     render() {
         return (
             <div>
@@ -79,6 +105,15 @@ import auth from '../../../../src/auth.js';
                             </Col>
                             <Col sm={10} md={4}>
                                 <FormControl type="password" name="pass2" placeholder="Verify Password" value={this.state.pass2} onChange={this.handleChange.bind(this)}/>
+                            </Col>
+                        </FormGroup>
+
+                        <FormGroup controlId="formHorizontalPassword">
+                            <Col componentClass={ControlLabel} sm={2}>
+                                Name
+                            </Col>
+                            <Col sm={10} md={4}>
+                                <FormControl type="text" name="name" placeholder="Name" value={this.state.name} onChange={this.handleChange.bind(this)}/>
                             </Col>
                         </FormGroup>
 
