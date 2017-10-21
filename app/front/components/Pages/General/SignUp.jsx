@@ -41,29 +41,33 @@ import user from '../../../../../api/src/models/users.js';
         let name = this.state.name;
         let email = this.state.email;
         let type = this.state.type;
-        let docRegist = this.docRegist;
 
         if(this.state.pass === this.state.pass2){
             bcrypt.hash(pass, 8, function(err, hash) {
-                alert("This is your encrypted password: "+ hash + ". Now imagine that you just signed up. Enjoy.");
-                /*bcrypt.compare("1234", hash, function(err, res) {
-                    alert(res);
-                });
-                */
-                if(email !=='' && name !==''){
+                if(email !=='' && name !=='' && Number(type) !== 0){
                     if(Number(type) === 1){  //1= doctor, 2=center
                         //Registration Doctor
                         let doctor = new user();
                         let id = new Date().getTime();
-                        doctor.createDoctor(id, name, email, hash, function (data){
+                        doctor.createUser(id, name, email, hash, "Doctor", function (data){
                             if(typeof data !== 'undefined'){
                                 alert('Success!');
+                                window.location.replace("/#/auth");
                             } else{
                                 alert('Sorry, I cannot do that.');
                             }
                         });
                     }else{
-                        alert("Soon");
+                        let center = new user();
+                        let id = new Date().getTime();
+                        center.createUser(id, name, email, hash, "Center", function (data){
+                            if(typeof data !== 'undefined'){
+                                alert('Success!');
+                                window.location.replace("/#/auth");
+                            } else{
+                                alert('Sorry, I cannot do that.');
+                            }
+                        });
                     }
                 }else{
                     alert("Please fill all fields.");

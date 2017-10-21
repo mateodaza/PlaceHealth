@@ -3,7 +3,7 @@ import { PageHeader, Form, FormGroup, FormControl, ControlLabel, Col, Button, Bu
 import { LinkContainer } from 'react-router-bootstrap';
 import Navbar from '../ReactComponents/Navbar.jsx';
 
-import { observer } from 'mobx-react';
+import { observer, observable } from 'mobx-react';
 import localStore from '../../../../src/localStore.js'
 import auth from '../../../../src/auth.js';
 import bcrypt from 'bcryptjs';
@@ -34,19 +34,17 @@ import dbuser from '../../../../../api/src/models/users.js';
         // localStore.reset();   //To reset default values
         let user = new dbuser();
         let password = this.state.pass;
-        user.findDoctor(this.state.email, function (data){
-            console.log(data);
+        user.findUser(this.state.email, function (data){
+            let userData = data;
             bcrypt.compare(password, data.pass, function(err, res) {
                 alert(res);
+                localStore.userEmail = userData.email;
+                localStore.sessionToken = auth.generateToken(userData);
                 localStore.isLogged = true;
+                window.location.replace("/#/auth");
             });
         });
 
-        if(auth.loggedIn(this.state.pass)){
-            alert("authenticated?");
-            localStore.isLogged = true;
-            window.location.replace("/#/auth");
-        }
     }
 
     render() {

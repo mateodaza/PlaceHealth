@@ -44,15 +44,13 @@ import auth from '../../../../src/auth.js';
                     <Navbar.Brand>
                         <a href="#" style={{color:'whitesmoke' , opacity:0.8}}>About</a>
                     </Navbar.Brand>
-                    <Nav >
+                    <Navbar.Brand >
                         {
                             localStore.isLogged && (   //Change this token plz.
-                                <LinkContainer to={'/auth'}>
-                                    <NavItem eventKey={1}>Dashboard</NavItem>
-                                </LinkContainer>
+                                <a href="#/auth" style={{color:'whitesmoke' , opacity:0.8}}>Dashboard</a>
                             )
                         }
-                    </Nav>
+                    </Navbar.Brand>
                     {
                         localStore.isLogged ? (
                             <LinkContainer to={'/'}>

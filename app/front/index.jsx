@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Link, Switch, HashRouter, Redirect } from 'react-
 
 import { observer } from 'mobx-react'
 import localStore from '../src/localStore.js'
+import auth from '../src/auth.js';
 
 import Home from './components/Pages/General/Home.jsx';
 import NotFound from './components/Pages/General/NotFound.jsx';
@@ -22,7 +23,8 @@ import SignUp from './components/Pages/General/SignUp.jsx';
   }
 
   loggedIn(){
-    return true;
+      auth.validateToken(localStore.sessionToken);
+      return localStore.isLogged;
   }
 
   render() {

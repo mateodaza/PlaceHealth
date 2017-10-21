@@ -1,12 +1,22 @@
 import localStore from './localStore.js';
+import jwt from 'jsonwebtoken';
 
 class auth{
-    loggedIn(token){
-        if(localStore.sessionToken == token){
-            return true;
-        }else{
-            return false;
-        }
+
+    generateToken(user){
+        return jwt.sign(user, "shhhhh");
+    }
+
+    validateToken(token){
+        jwt.verify(token,
+            "shhhhh",
+            function(err, decoded) {
+                if (err) {
+                    localStore.isLogged = false;
+                } else {
+                    localStore.isLogged = true;
+                }
+            });
     }
 }
 
