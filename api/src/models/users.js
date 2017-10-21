@@ -39,6 +39,17 @@ export default class clients {
         });
     }
 
+    getAllUserInfo(em, callback){
+        let cypherQuery = "MATCH (n { email: {email}})-[r]-() RETURN n,r ";
+        db.query(cypherQuery, {email: em}, function(err, results) {
+            if (err) {
+                return callback(err);
+            } else {
+                let result = results[0];
+                return callback(result);
+            }
+        });
+    }
 
 
 }

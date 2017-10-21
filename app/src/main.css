@@ -19,6 +19,7 @@ body {
 .divContainer{
     height: 100vh;
     padding-bottom:6em;
+    margin: 1em;
 }
 .navbar{
     margin: 0;
