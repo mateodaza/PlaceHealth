@@ -35,13 +35,15 @@ import dbuser from '../../../../../api/src/models/users.js';
         let user = new dbuser();
         let password = this.state.pass;
         user.findUser(this.state.email, function (data){
-            let userData = data;
-            bcrypt.compare(password, data.pass, function(err, res) {
+            let userData = data.n;
+            bcrypt.compare(password, userData.pass, function(err, res) {
                 alert(res);
-                localStore.userEmail = userData.email;
-                localStore.sessionToken = auth.generateToken(userData);
-                localStore.isLogged = true;
-                window.location.replace("/#/auth");
+                if(res===true){
+                    localStore.userEmail = userData.email;
+                    localStore.sessionToken = auth.generateToken(userData);
+                    localStore.isLogged = true;
+                    window.location.replace("/#/auth");
+                }
             });
         });
 

@@ -28,7 +28,7 @@ export default class clients {
     }
 
     findUser(em, callback){
-        let cypherQuery = "MATCH (n { email: {email}}) RETURN n ";
+        let cypherQuery = "MATCH (n { email: {email}}) RETURN n,labels(n) ";
         db.query(cypherQuery, {email: em}, function(err, results) {
             if (err) {
                 return callback(err);
@@ -39,13 +39,41 @@ export default class clients {
         });
     }
 
+    getCenters(callback){
+        let cypherQuery = "MATCH (n:Center) RETURN n ";
+        db.query(cypherQuery, function(err, results) {
+            if (err) {
+                return callback(err);
+            } else {
+                let result = results;
+                return callback(result);
+            }
+        });
+    }
+
     getAllUserInfo(em, callback){
-        let cypherQuery = "MATCH (n { email: {email}})-[r]-() RETURN n,r ";
+        let cypherQuery = "MATCH (n { email: {email}})-[r]-(m) RETURN n,r,m ";
         db.query(cypherQuery, {email: em}, function(err, results) {
             if (err) {
                 return callback(err);
             } else {
+                let result = results;
+                return callback(result);
+            }
+        });
+    }
+
+    setDocToExistingCenter(docEmail, centerName, callback){
+        let cypherQuery = "MATCH (n:Doctor {email: {docEmail} }) " +
+                        "MERGE (t:Center {name: {centerName}}) "+
+                         "CREATE UNIQUE (n)-[:TRABAJA_EN] -> (t)";
+        db.query(cypherQuery, {docEmail: docEmail, centerName: centerName}, function(err, results) {
+            if (err) {
+                console.error('Error creating new relation', err);
+                return callback(err);
+            } else {
                 let result = results[0];
+                console.log('Relation saved to database with id:', result);
                 return callback(result);
             }
         });

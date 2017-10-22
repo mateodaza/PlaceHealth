@@ -5,7 +5,7 @@ const defaultUser = {
     sessionToken : 1011,
     isLogged: false,
     userEmail: '',
-    userData: []
+    allCenters: []
 };
 
 const observableUser = storedObservable('user', defaultUser, 500);
