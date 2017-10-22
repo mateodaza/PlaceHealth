@@ -51,6 +51,30 @@ export default class clients {
         });
     }
 
+    getServices(callback){
+        let cypherQuery = "MATCH (n:Service) RETURN n ";
+        db.query(cypherQuery, function(err, results) {
+            if (err) {
+                return callback(err);
+            } else {
+                let result = results;
+                return callback(result);
+            }
+        });
+    }
+
+    getSpecialties(callback){
+        let cypherQuery = "MATCH (n:Specialty) RETURN n ";
+        db.query(cypherQuery, function(err, results) {
+            if (err) {
+                return callback(err);
+            } else {
+                let result = results;
+                return callback(result);
+            }
+        });
+    }
+
     getAllUserInfo(em, callback){
         let cypherQuery = "MATCH (n { email: {email}})-[r]-(m) RETURN n,r,m ";
         db.query(cypherQuery, {email: em}, function(err, results) {
@@ -68,6 +92,38 @@ export default class clients {
                         "MERGE (t:Center {name: {centerName}}) "+
                          "CREATE UNIQUE (n)-[:TRABAJA_EN] -> (t)";
         db.query(cypherQuery, {docEmail: docEmail, centerName: centerName}, function(err, results) {
+            if (err) {
+                console.error('Error creating new relation', err);
+                return callback(err);
+            } else {
+                let result = results[0];
+                console.log('Relation saved to database with id:', result);
+                return callback(result);
+            }
+        });
+    }
+
+    setDocToSpecialty(docEmail, specialtyName, callback){
+        let cypherQuery = "MATCH (n:Doctor {email: {docEmail} }) " +
+            "MERGE (t:Specialty {name: {specialtyName}}) "+
+            "CREATE UNIQUE (n)-[:ESPECIALISTA_EN] -> (t)";
+        db.query(cypherQuery, {docEmail: docEmail, specialtyName: specialtyName}, function(err, results) {
+            if (err) {
+                console.error('Error creating new relation', err);
+                return callback(err);
+            } else {
+                let result = results[0];
+                console.log('Relation saved to database with id:', result);
+                return callback(result);
+            }
+        });
+    }
+
+    setCenterToService(centerEmail, serviceName, callback){
+        let cypherQuery = "MATCH (n:Center {email: {centerEmail} }) " +
+            "MERGE (t:Service {name: {serviceName}}) "+
+            "CREATE UNIQUE (n)-[:OFRECE] -> (t)";
+        db.query(cypherQuery, {centerEmail: centerEmail, serviceName: serviceName}, function(err, results) {
             if (err) {
                 console.error('Error creating new relation', err);
                 return callback(err);

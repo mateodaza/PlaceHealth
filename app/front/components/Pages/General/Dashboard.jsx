@@ -20,7 +20,10 @@ import dbuser from '../../../../../api/src/models/users.js';
             userData: [],
             allUserData:[],
             selected: 1,
-            selectedCenter: ''
+            selectedCenter: '',
+            selectedSpecialty: '',
+            selectedService: ''
+
         }
     }
 
@@ -52,10 +55,35 @@ import dbuser from '../../../../../api/src/models/users.js';
         if(Number(this.state.selected) === 1){ // Own Medical Center
 
         }else{  //Existing Medical Center
-            alert(this.state.selectedCenter);
-            user.setDocToExistingCenter(localStore.userEmail, this.state.selectedCenter, function(result){
+            if(this.state.selectedCenter !== '') {
+                user.setDocToExistingCenter(localStore.userEmail, this.state.selectedCenter, function (result) {
+                    this.getData();
+                    this.close();
+                }.bind(this));
+            }
+        }
+
+    }
+
+    setSpecialty(e){
+        e.preventDefault();
+        let user = new dbuser();
+        if(this.state.selectedSpecialty !== '') {
+            user.setDocToSpecialty(localStore.userEmail, this.state.selectedSpecialty, function (result) {
                 this.getData();
-            });
+                this.close();
+            }.bind(this));
+        }
+    }
+
+    setService(e){
+        e.preventDefault();
+        let user = new dbuser();
+        if(this.state.selectedService !== ''){
+            user.setCenterToService(localStore.userEmail, this.state.selectedService, function(result){
+                this.getData();
+                this.close();
+            }.bind(this));
         }
     }
 
@@ -74,12 +102,32 @@ import dbuser from '../../../../../api/src/models/users.js';
         //Get All Centers
         this.getCenters();
 
+        //Get All Specialties
+        this.getSpecialties();
+
+        //Get All Services
+        this.getServices();
+
+    }
+
+    getSpecialties(){
+        let user = new dbuser();
+        user.getSpecialties(function (data){
+            localStore.allSpecialties = data;
+        }.bind(this));
     }
 
     getCenters(){
         let user = new dbuser();
         user.getCenters(function (data){
             localStore.allCenters = data;
+        }.bind(this));
+    }
+
+    getServices(){
+        let user = new dbuser();
+        user.getServices(function (data){
+            localStore.allServices = data;
         }.bind(this));
     }
 
@@ -93,6 +141,9 @@ import dbuser from '../../../../../api/src/models/users.js';
                     <Tabs defaultActiveKey={1} id="noanim-tab-example">
                         <Tab eventKey={1} title="Profile">
                             <div className="divContainer">
+                                {
+
+                                }
                                 <Alert bsStyle="danger">
                                     <strong>Holy guacamole!</strong> Set your information so people can see you!
                                 </Alert>
@@ -110,11 +161,12 @@ import dbuser from '../../../../../api/src/models/users.js';
                                                 <div style={{marginBottom: '1em'}}>
                                                     {
                                                         this.state.allUserData.map((i)=>{
-                                                            console.log(i[Object.keys(i)[2]]);
                                                             let j=i[Object.keys(i)[2]];
-                                                            return <div key={j.id}>
-                                                                        <h4> {j.name}</h4>
-                                                                    </div>
+                                                            if(j.type !== 'specialty') {
+                                                                return <div key={j.id}>
+                                                                    <h4> {j.name}</h4>
+                                                                </div>
+                                                            }
                                                         })
                                                     }
                                                 </div>
@@ -126,7 +178,17 @@ import dbuser from '../../../../../api/src/models/users.js';
                                             <Col xsHidden md={4} >
                                                 <h3> Specialties </h3>
                                                 <div style={{marginBottom: '1em'}}>
-                                                    Specialty info here pls
+                                                    {
+                                                        this.state.allUserData.map((i)=>{
+                                                            let j=i[Object.keys(i)[2]];
+                                                            if(j.type === 'specialty'){
+                                                                return <div key={j.id}>
+                                                                    <h4> {j.name}</h4>
+                                                                </div>
+                                                            }
+                                                        })
+                                                    }
+
                                                 </div>
                                                 <Button type="submit" bsSize="small" className="formBtn1"
                                                          name="showSpecialtyModal" onClick={this.open.bind(this)}>
@@ -144,7 +206,16 @@ import dbuser from '../../../../../api/src/models/users.js';
                                             <Col xsHidden md={4} >
                                                 <h3> Services </h3>
                                                 <div style={{marginBottom: '1em'}}>
-                                                    Services info here pls
+                                                    {
+                                                        this.state.allUserData.map((i)=>{
+                                                            let j=i[Object.keys(i)[2]];
+                                                            if(j.type === 'service') {
+                                                                return <div key={j.id}>
+                                                                    <h4> {j.name}</h4>
+                                                                </div>
+                                                            }
+                                                        })
+                                                    }
                                                 </div>
                                                 <Button type="submit" bsSize="small" className="formBtn1"
                                                         name="showServiceModal" onClick={this.open.bind(this)}>
@@ -162,14 +233,18 @@ import dbuser from '../../../../../api/src/models/users.js';
                                     </Modal.Header>
                                     <Modal.Body>
                                         <Form horizontal className="logForm">
-                                            <FormGroup controlId="formSPecialty">
+                                            <FormGroup controlId="formServices">
                                                 <Col componentClass={ControlLabel} sm={2}>
                                                     Select Service
                                                 </Col>
                                                 <Col componentClass={ControlLabel} sm={10}>
-                                                    <FormControl componentClass="select" placeholder="select">
-                                                        <option value="select">select</option>
-                                                        <option value="other">...</option>
+                                                    <FormControl componentClass="select" name="selectedService" placeholder="Select Service" onChange={this.handleChange.bind(this)}>
+                                                        <option value={""} />
+                                                        {
+                                                            localStore.allServices.map((i)=> {
+                                                                return <option value={i.name} key={i.name}> {i.name} </option>
+                                                            })
+                                                        }
                                                     </FormControl>
                                                 </Col>
                                             </FormGroup>
@@ -177,7 +252,7 @@ import dbuser from '../../../../../api/src/models/users.js';
                                     </Modal.Body>
                                     <Modal.Footer>
                                         <Button type="submit" bsSize="small" className="formBtn1"
-                                                name="setService" >
+                                                name="setService" onClick={this.setService.bind(this)}>
                                             Set New Service
                                         </Button>
                                     </Modal.Footer>
@@ -195,17 +270,21 @@ import dbuser from '../../../../../api/src/models/users.js';
                                                 Select Specialty
                                             </Col>
                                             <Col componentClass={ControlLabel} sm={10}>
-                                            <FormControl componentClass="select" placeholder="select">
-                                                <option value="select">select</option>
-                                                <option value="other">...</option>
-                                            </FormControl>
+                                                <FormControl componentClass="select" name="selectedSpecialty" placeholder="Select Specialty" onChange={this.handleChange.bind(this)}>
+                                                    <option value={""} />
+                                                    {
+                                                        localStore.allSpecialties.map((i)=> {
+                                                            return <option value={i.name} key={i.name}> {i.name} </option>
+                                                        })
+                                                    }
+                                                </FormControl>
                                             </Col>
                                         </FormGroup>
                                      </Form>
                                     </Modal.Body>
                                     <Modal.Footer>
                                         <Button type="submit" bsSize="small" className="formBtn1"
-                                            name="setMedCenter" >
+                                            name="setMedCenter" onClick={this.setSpecialty.bind(this)}>
                                             Set Specialty
                                         </Button>
                                      </Modal.Footer>
@@ -244,7 +323,7 @@ import dbuser from '../../../../../api/src/models/users.js';
                                                      <FormGroup controlId="formSpecialty">
                                                             <Col componentClass={ControlLabel} sm={12}>
                                                                  <FormControl componentClass="select" name="selectedCenter" placeholder="Select Medical Center" onChange={this.handleChange.bind(this)}>
-                                                                     <option value={"SELECT ONE"} > Selecto one option please. </option>
+                                                                     <option value={""} />
                                                                      {
                                                                          localStore.allCenters.map((i)=> {
                                                                              return <option value={i.name} key={i.id}> {i.name} </option>
