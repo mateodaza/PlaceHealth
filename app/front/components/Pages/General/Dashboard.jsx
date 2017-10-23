@@ -100,6 +100,8 @@ import dbuser from '../../../../../api/src/models/users.js';
         user.getAllUserInfo(localStore.userEmail, function (data){
             console.log(data);
             this.setState({allUserData: data});
+            //CheckInfo
+            this.checkInfo();
         }.bind(this));
 
         //Get All Centers
@@ -111,9 +113,6 @@ import dbuser from '../../../../../api/src/models/users.js';
         //Get All Services
         this.getServices();
 
-        //CheckInfo
-        //this.checkInfo();
-
     }
 
     openSetSpecialty(e){
@@ -123,7 +122,6 @@ import dbuser from '../../../../../api/src/models/users.js';
             let j=i[Object.keys(i)[2]];
             if(j.name === e.target.value){
                 clickedSpecialInfo = i[Object.keys(i)[1]].properties;
-                console.log(clickedSpecialInfo);
             }
         });
         this.setState({clickedSpecialtyInfo: clickedSpecialInfo, centerName: clickedSpecialInfo.name,
@@ -132,15 +130,15 @@ import dbuser from '../../../../../api/src/models/users.js';
     }
 
     checkInfo(){
+        let check = false;
         this.state.allUserData.map((i)=>{
-            let j=i[Object.keys(i)[1]];
-            console.log("HEY");
-            console.log(j);
-            if( j.name==="" || j.address==="" || j.phone==="" || j.description===""){
-                alert("OH NO");
-                this.setState({checkInfo: true});
+            let j=i[Object.keys(i)[1]].properties;
+            if(Object.keys(j).length===0 || j.name==="" ||
+                            j.address==="" || j.phone==="" || j.description===""){
+                check = true;
             }
         });
+        this.setState({checkInfo: check});
     }
 
     getSpecialties(){
