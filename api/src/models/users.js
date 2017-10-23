@@ -119,6 +119,22 @@ export default class clients {
         });
     }
 
+    setCenterToSpecialty(docEmail, specialtyName, callback){
+        let cypherQuery = "MATCH (n:Center {email: {docEmail} }) " +
+            "MERGE (t:Specialty {name: {specialtyName}}) "+
+            "CREATE UNIQUE (n)-[:ESPECIALIZA] -> (t)";
+        db.query(cypherQuery, {docEmail: docEmail, specialtyName: specialtyName}, function(err, results) {
+            if (err) {
+                console.error('Error creating new relation', err);
+                return callback(err);
+            } else {
+                let result = results[0];
+                console.log('Relation saved to database with id:', result);
+                return callback(result);
+            }
+        });
+    }
+
     setCenterToService(centerEmail, serviceName, callback){
         let cypherQuery = "MATCH (n:Center {email: {centerEmail} }) " +
             "MERGE (t:Service {name: {serviceName}}) "+
@@ -150,5 +166,19 @@ export default class clients {
         });
     }
 
+    updateCenterInfo(centerEmail, address, phone, callback){
+        let cypherQuery = "MATCH (n:Center {email: {centerEmail} }) " +
+            "SET n.address={address}, n.phone={phone}"
+        db.query(cypherQuery, {centerEmail: centerEmail, address: address, phone: phone}, function(err, results) {
+            if (err) {
+                console.error('Error creating new relation', err);
+                return callback(err);
+            } else {
+                let result = results[0];
+                console.log('Relation saved to database with id:', result);
+                return callback(result);
+            }
+        });
+    }
 
 }

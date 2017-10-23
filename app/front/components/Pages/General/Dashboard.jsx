@@ -14,12 +14,16 @@ import dbuser from '../../../../../api/src/models/users.js';
             showSpecialtyModal : false,
             showServiceModal: false,
             showModSpecialtyModal: false,
+            showUpdateInfoModal: false,
             checkInfo: false,
 
             centerPhone: '',
             centerAddress: '',
             centerName: '',
             centerDescription: '',
+
+            newCenterAddress: '',
+            newCenterPhone: '',
 
             type: '',
             userData: [],
@@ -42,7 +46,7 @@ import dbuser from '../../../../../api/src/models/users.js';
     }
 
     close() {
-        this.setState({ showSpecialtyModal: false, showModSpecialtyModal:false, showServiceModal: false });
+        this.setState({ showUpdateInfoModal: false, showSpecialtyModal: false, showModSpecialtyModal:false, showServiceModal: false });
     }
 
     open(e) {
@@ -72,10 +76,19 @@ import dbuser from '../../../../../api/src/models/users.js';
         e.preventDefault();
         let user = new dbuser();
         if(this.state.selectedSpecialty !== '') {
-            user.setDocToSpecialty(localStore.userEmail, this.state.selectedSpecialty, function (result) {
-                this.getData();
-                this.close();
-            }.bind(this));
+            if(this.state.type === 'Doctor'){
+                user.setDocToSpecialty(localStore.userEmail, this.state.selectedSpecialty, function (result) {
+                    this.getData();
+                    this.close();
+                }.bind(this));
+            }else{
+                if(this.state.type === 'Center'){
+                    user.setCenterToSpecialty(localStore.userEmail, this.state.selectedSpecialty, function (result) {
+                        this.getData();
+                        this.close();
+                    }.bind(this));
+                }
+            }
         }
     }
 
@@ -98,7 +111,6 @@ import dbuser from '../../../../../api/src/models/users.js';
 
         //Get All INFO
         user.getAllUserInfo(localStore.userEmail, function (data){
-            console.log(data);
             this.setState({allUserData: data});
             //CheckInfo
             this.checkInfo();
@@ -131,13 +143,22 @@ import dbuser from '../../../../../api/src/models/users.js';
 
     checkInfo(){
         let check = false;
-        this.state.allUserData.map((i)=>{
-            let j=i[Object.keys(i)[1]].properties;
-            if(Object.keys(j).length===0 || j.name==="" ||
-                            j.address==="" || j.phone==="" || j.description===""){
+        if(this.state.type === 'Doctor'){
+            this.state.allUserData.map((i)=>{
+                let j=i[Object.keys(i)[1]].properties;
+                if(Object.keys(j).length===0 || j.name==="" ||
+                    j.address==="" || j.phone==="" || j.description===""){
+                    check = true;
+                }
+            });
+        }else{
+            let j = this.state.userData;
+            if( j.phone === '' || j.address === '' || j.phone === undefined || j.address === undefined){
                 check = true;
+            }else{
+                this.setState({newCenterAddress: j.address, newCenterPhone: j.phone});
             }
-        });
+        }
         this.setState({checkInfo: check});
     }
 
@@ -162,6 +183,14 @@ import dbuser from '../../../../../api/src/models/users.js';
         }.bind(this));
     }
 
+    updateCenterInfo(){
+        let user = new dbuser();
+        user.updateCenterInfo(localStore.userEmail, this.state.newCenterAddress, this.state.newCenterPhone,function (data){
+            this.getData();
+            this.close();
+        }.bind(this));
+    }
+
     render() {
         return (
             <div>
@@ -176,9 +205,9 @@ import dbuser from '../../../../../api/src/models/users.js';
                                     this.state.checkInfo === true &&(
                                         <Alert bsStyle="danger">
                                             <strong>Holy guacamole!</strong> Seems like you are missing some information.
-                                             Check that all fields are completed!
+                                            Check that all fields are completed!
                                         </Alert>
-                                    )
+                                     )
                                 }
 
                                 {
@@ -221,7 +250,7 @@ import dbuser from '../../../../../api/src/models/users.js';
                                                     </ListGroup>
                                                 </div>
                                                 <Button type="submit" style={{float: 'right'}} bsSize="lg" className="formBtn1"
-                                                         name="showSpecialtyModal" onClick={this.open.bind(this)}>
+                                                         name="showUpdateInfoModal" onClick={this.open.bind(this)}>
                                                             Add New Specialty
                                                 </Button>
                                             </Col>
@@ -234,6 +263,12 @@ import dbuser from '../../../../../api/src/models/users.js';
                                                 <h3> General Info </h3>
                                                 <h3> Name: <span style={{color: 'grey'}}> {this.state.userData.name} </span></h3>
                                                 <h3> Email: <span style={{color: 'grey'}}>  {localStore.userEmail} </span></h3>
+                                                <h3> Address: <span style={{color: 'grey'}}> {this.state.userData.address} </span></h3>
+                                                <h3> Phone Number: <span style={{color: 'grey'}}>  {this.state.userData.phone} </span></h3>
+                                                <Button type="submit" bsSize="small" className="formBtn1"
+                                                        name="showUpdateInfoModal" onClick={this.open.bind(this)}>
+                                                    Update Info
+                                                </Button>
                                             </Col>
                                             <Col xsHidden md={4} >
                                                 <h3> Services </h3>
@@ -252,6 +287,25 @@ import dbuser from '../../../../../api/src/models/users.js';
                                                 <Button type="submit" bsSize="small" className="formBtn1"
                                                         name="showServiceModal" onClick={this.open.bind(this)}>
                                                     Add New Service
+                                                </Button>
+                                            </Col>
+                                            <Col xsHidden md={4} >
+                                                <h3> Specialties </h3>
+                                                <div style={{marginBottom: '1em'}}>
+                                                    {
+                                                        this.state.allUserData.map((i)=>{
+                                                            let j=i[Object.keys(i)[2]];
+                                                            if(j.type === 'specialty') {
+                                                                return <div key={j.id}>
+                                                                    <h4> {j.name}</h4>
+                                                                </div>
+                                                            }
+                                                        })
+                                                    }
+                                                </div>
+                                                <Button type="submit" bsSize="small" className="formBtn1"
+                                                        name="showSpecialtyModal" onClick={this.open.bind(this)}>
+                                                    Add New Specialty
                                                 </Button>
                                             </Col>
                                         </div>
@@ -328,8 +382,6 @@ import dbuser from '../../../../../api/src/models/users.js';
                                         </Button>
                                      </Modal.Footer>
                                 </Modal>
-
-                                {/*WORKING HERE*/}
                                 {/*-----------------------*/}
                                 {/*MODAL FOR SETTING MEDICAL CENTER*/}
                                 <Modal show={this.state.showModSpecialtyModal} onHide={this.close.bind(this)}>
@@ -385,6 +437,39 @@ import dbuser from '../../../../../api/src/models/users.js';
                                  </Modal>
                                 {/*-----------------------*/}
                                 {/* END DOCTOR PART*/}
+
+                                {/*MODAL FOR SETTING MEDICAL CENTER*/}
+                                <Modal show={this.state.showUpdateInfoModal} onHide={this.close.bind(this)}>
+                                    <Modal.Header closeButton>
+                                        <Modal.Title>Update Info</Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                        <Form style={{marginTop: '1em'}} horizontal className="logForm">
+                                            <FormGroup controlId="formSpecialty">
+                                                <Col componentClass={ControlLabel} sm={4}>
+                                                    Medical Center Address
+                                                </Col>
+                                                <Col sm={10} md={8}>
+                                                    <FormControl type="text" name="newCenterAddress" placeholder="Address" value={this.state.newCenterAddress} onChange={this.handleChange.bind(this)}/>
+                                                </Col>
+                                            </FormGroup>
+                                            <FormGroup controlId="formSpecialty">
+                                                <Col componentClass={ControlLabel} sm={4}>
+                                                    Medical Center Phone Number
+                                                </Col>
+                                                <Col sm={10} md={8}>
+                                                    <FormControl type="text" name="newCenterPhone" placeholder="Phone Number" value={this.state.newCenterPhone} onChange={this.handleChange.bind(this)}/>
+                                                </Col>
+                                            </FormGroup>
+                                        </Form>
+                                    </Modal.Body>
+                                    <Modal.Footer>
+                                        <Button type="submit" bsSize="small" className="formBtn1"
+                                                name="setMedCenter" onClick={this.updateCenterInfo.bind(this)}>
+                                            Update Information
+                                        </Button>
+                                    </Modal.Footer>
+                                </Modal>
                             </div>
                         </Tab>
 

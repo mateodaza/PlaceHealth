@@ -37,7 +37,6 @@ import dbuser from '../../../../../api/src/models/users.js';
         user.findUser(this.state.email, function (data){
             let userData = data.n;
             bcrypt.compare(password, userData.pass, function(err, res) {
-                alert(res);
                 if(res===true){
                     localStore.userEmail = userData.email;
                     localStore.sessionToken = auth.generateToken(userData);
