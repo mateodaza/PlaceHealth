@@ -135,5 +135,20 @@ export default class clients {
         });
     }
 
+    setDocSpecialtyRelation(doc, specialty, name, address, phone, description , callback){
+        let cypherQuery = "MATCH (n:Doctor {email: {doc} })-[r:ESPECIALISTA_EN]->(t:Specialty {name: {specialty}}) " +
+            "SET r.name={name}, r.address={address}, r.phone={phone}, r.description={description}";
+        db.query(cypherQuery, {doc: doc, specialty: specialty, name: name, address: address, phone: phone, description: description}, function(err, results) {
+            if (err) {
+                console.error('Error creating new relation', err);
+                return callback(err);
+            } else {
+                let result = results[0];
+                console.log('Relation saved to database with id:', result);
+                return callback(result);
+            }
+        });
+    }
+
 
 }

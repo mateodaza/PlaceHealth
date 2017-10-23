@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageHeader, Tabs, Tab, Alert, Modal, Button, Col, Form, FormGroup, FormControl, ControlLabel} from 'react-bootstrap';
+import { PageHeader, Tabs, Tab, Alert, Modal, Button, Col, ListGroup, ListGroupItem, Form, FormGroup, FormControl, ControlLabel} from 'react-bootstrap';
 import Navbar from '../ReactComponents/Navbar.jsx';
 
 import { observer } from 'mobx-react';
@@ -13,18 +13,26 @@ import dbuser from '../../../../../api/src/models/users.js';
         this.state={
             showSpecialtyModal : false,
             showServiceModal: false,
-            showCenterModal: false,
+            showModSpecialtyModal: false,
+            checkInfo: false,
+
             centerPhone: '',
             centerAddress: '',
+            centerName: '',
+            centerDescription: '',
+
             type: '',
             userData: [],
             allUserData:[],
+
             selected: 1,
             selectedCenter: '',
             selectedSpecialty: '',
-            selectedService: ''
-
+            selectedService: '',
+            clickedSpecialty: '',
+            clickedSpecialtyInfo: []
         }
+        this.getData();
     }
 
     handleChange(e) {
@@ -33,8 +41,8 @@ import dbuser from '../../../../../api/src/models/users.js';
         })
     }
 
-    close(e) {
-        this.setState({ showSpecialtyModal: false, showCenterModal:false, showServiceModal: false });
+    close() {
+        this.setState({ showSpecialtyModal: false, showModSpecialtyModal:false, showServiceModal: false });
     }
 
     open(e) {
@@ -49,19 +57,14 @@ import dbuser from '../../../../../api/src/models/users.js';
         this.getData();
     }
 
-    setMedicalCenter(e){
+    setMedicalCenterInfo(e){
         e.preventDefault();
         let user = new dbuser();
-        if(Number(this.state.selected) === 1){ // Own Medical Center
-
-        }else{  //Existing Medical Center
-            if(this.state.selectedCenter !== '') {
-                user.setDocToExistingCenter(localStore.userEmail, this.state.selectedCenter, function (result) {
-                    this.getData();
-                    this.close();
-                }.bind(this));
-            }
-        }
+        user.setDocSpecialtyRelation(localStore.userEmail, this.state.clickedSpecialty,this.state.centerName,
+                                this.state.centerAddress, this.state.centerPhone, this.state.centerDescription, function (result) {
+                this.getData();
+                this.close();
+        }.bind(this));
 
     }
 
@@ -90,7 +93,7 @@ import dbuser from '../../../../../api/src/models/users.js';
     getData(){
         let user = new dbuser();
         user.findUser(localStore.userEmail, function (data){
-            this.setState({type : data[Object.keys(data)[1]][0], userData: data.n})
+            this.setState({type : data[Object.keys(data)[1]][0], userData: data.n});
         }.bind(this));
 
         //Get All INFO
@@ -108,6 +111,36 @@ import dbuser from '../../../../../api/src/models/users.js';
         //Get All Services
         this.getServices();
 
+        //CheckInfo
+        //this.checkInfo();
+
+    }
+
+    openSetSpecialty(e){
+        e.preventDefault();
+        let clickedSpecialInfo = [];
+        this.state.allUserData.map((i)=>{
+            let j=i[Object.keys(i)[2]];
+            if(j.name === e.target.value){
+                clickedSpecialInfo = i[Object.keys(i)[1]].properties;
+                console.log(clickedSpecialInfo);
+            }
+        });
+        this.setState({clickedSpecialtyInfo: clickedSpecialInfo, centerName: clickedSpecialInfo.name,
+            centerAddress: clickedSpecialInfo.address, showModSpecialtyModal: true, clickedSpecialty:[e.target.value],
+            centerPhone: clickedSpecialInfo.phone, centerDescription: clickedSpecialInfo.description})
+    }
+
+    checkInfo(){
+        this.state.allUserData.map((i)=>{
+            let j=i[Object.keys(i)[1]];
+            console.log("HEY");
+            console.log(j);
+            if( j.name==="" || j.address==="" || j.phone==="" || j.description===""){
+                alert("OH NO");
+                this.setState({checkInfo: true});
+            }
+        });
     }
 
     getSpecialties(){
@@ -142,11 +175,13 @@ import dbuser from '../../../../../api/src/models/users.js';
                         <Tab eventKey={1} title="Profile">
                             <div className="divContainer">
                                 {
-
+                                    this.state.checkInfo === true &&(
+                                        <Alert bsStyle="danger">
+                                            <strong>Holy guacamole!</strong> Seems like you are missing some information.
+                                             Check that all fields are completed!
+                                        </Alert>
+                                    )
                                 }
-                                <Alert bsStyle="danger">
-                                    <strong>Holy guacamole!</strong> Set your information so people can see you!
-                                </Alert>
 
                                 {
                                     this.state.type === 'Doctor'?(
@@ -156,47 +191,46 @@ import dbuser from '../../../../../api/src/models/users.js';
                                                 <h3> Name: <span style={{color: 'grey'}}> {this.state.userData.name} </span></h3>
                                                 <h3> Email: <span style={{color: 'grey'}}>  {localStore.userEmail} </span></h3>
                                             </Col>
-                                            <Col xs={6} md={4} >
-                                                <h3> Medical Center </h3>
-                                                <div style={{marginBottom: '1em'}}>
-                                                    {
-                                                        this.state.allUserData.map((i)=>{
-                                                            let j=i[Object.keys(i)[2]];
-                                                            if(j.type !== 'specialty') {
-                                                                return <div key={j.id}>
-                                                                    <h4> {j.name}</h4>
-                                                                </div>
-                                                            }
-                                                        })
-                                                    }
-                                                </div>
+                                            { /*
                                                 <Button type="submit" bsSize="small" className="formBtn1"
                                                         name="showCenterModal" onClick={this.open.bind(this)}>
                                                     Set Medical Center
                                                 </Button>
-                                            </Col>
-                                            <Col xsHidden md={4} >
+                                            */
+                                            }
+                                            <Col xsHidden md={8} >
                                                 <h3> Specialties </h3>
                                                 <div style={{marginBottom: '1em'}}>
+                                                    <ListGroup>
                                                     {
                                                         this.state.allUserData.map((i)=>{
                                                             let j=i[Object.keys(i)[2]];
+                                                            let k=i[Object.keys(i)[1]].properties;
                                                             if(j.type === 'specialty'){
-                                                                return <div key={j.id}>
-                                                                    <h4> {j.name}</h4>
-                                                                </div>
+                                                                return  <div key={j.id}>
+                                                                            <ListGroupItem key={j.id} >
+                                                                                 <h3>{j.name}</h3>
+                                                                                <h4> <strong>Medical Center Name:</strong> {k.name}</h4>
+                                                                                <h4> <strong>Medical Center Address:</strong> {k.address}</h4>
+                                                                                <h4> <strong>Medical Center Phone Number:</strong> {k.phone}</h4>
+                                                                                <h4> <strong>Service Description:</strong> {k.description}</h4>
+                                                                                <Button value={j.name} onClick={this.openSetSpecialty.bind(this)}> Edit </Button>
+                                                                            </ListGroupItem>
+                                                                        </div>
                                                             }
                                                         })
                                                     }
-
+                                                    </ListGroup>
                                                 </div>
-                                                <Button type="submit" bsSize="small" className="formBtn1"
+                                                <Button type="submit" style={{float: 'right'}} bsSize="lg" className="formBtn1"
                                                          name="showSpecialtyModal" onClick={this.open.bind(this)}>
                                                             Add New Specialty
                                                 </Button>
                                             </Col>
                                         </div>
                                     ):(
+
+                                        //MEDICAL CENTER
                                         <div>
                                             <Col xs={6} md={4} >
                                                 <h3> General Info </h3>
@@ -225,6 +259,13 @@ import dbuser from '../../../../../api/src/models/users.js';
                                         </div>
                                     )
                                 }
+
+
+
+
+
+
+
 
                                 {/*MODAL FOR SETTING SERVICES*/}
                                 <Modal show={this.state.showServiceModal} onHide={this.close.bind(this)}>
@@ -289,57 +330,58 @@ import dbuser from '../../../../../api/src/models/users.js';
                                         </Button>
                                      </Modal.Footer>
                                 </Modal>
+
+                                {/*WORKING HERE*/}
                                 {/*-----------------------*/}
                                 {/*MODAL FOR SETTING MEDICAL CENTER*/}
-                                <Modal show={this.state.showCenterModal} onHide={this.close.bind(this)}>
+                                <Modal show={this.state.showModSpecialtyModal} onHide={this.close.bind(this)}>
                                     <Modal.Header closeButton>
-                                         <Modal.Title>Set Medical Center</Modal.Title>
+                                         <Modal.Title>{this.state.clickedSpecialty}</Modal.Title>
                                     </Modal.Header>
                                     <Modal.Body>
                                         <Tabs activeKey={this.state.selected}  onSelect={this.handleSelect.bind(this)} id="noanim-tab-example">
-                                             <Tab eventKey={1} title="Your Own Medical Center">
+                                             <Tab eventKey={1} title="General Information">
                                                 <Form style={{marginTop: '1em'}} horizontal className="logForm">
-                                                 <FormGroup controlId="formSPecialty">
-                                                 <Col componentClass={ControlLabel} sm={2}>
-                                                     Address
+                                                 <FormGroup controlId="formSpecialty">
+                                                 <Col componentClass={ControlLabel} sm={4}>
+                                                     Medical Center Name
                                                  </Col>
-                                                 <Col sm={10} md={4}>
-                                                    <FormControl type="text" name="centerAddress" placeholder="Address" value={this.state.centerAddress} onChange={this.handleChange.bind(this)}/>
+                                                 <Col sm={10} md={8}>
+                                                    <FormControl type="text" name="centerName" placeholder="Name" value={this.state.centerName} onChange={this.handleChange.bind(this)}/>
                                                  </Col>
                                                   </FormGroup>
-                                                <FormGroup controlId="formSPecialty">
-                                                  <Col componentClass={ControlLabel} sm={2}>
-                                                     Phone Number
+                                                    <FormGroup controlId="formSpecialty">
+                                                        <Col componentClass={ControlLabel} sm={4}>
+                                                            Medical Center Address
+                                                        </Col>
+                                                        <Col sm={10} md={8}>
+                                                            <FormControl type="text" name="centerAddress" placeholder="Address" value={this.state.centerAddress} onChange={this.handleChange.bind(this)}/>
+                                                        </Col>
+                                                    </FormGroup>
+                                                <FormGroup controlId="formSpecialty">
+                                                  <Col componentClass={ControlLabel} sm={4}>
+                                                      Medical Center Phone Number
                                                   </Col>
-                                                    <Col sm={10} md={4}>
+                                                    <Col sm={10} md={8}>
                                                         <FormControl type="text" name="centerPhone" placeholder="Phone Number" value={this.state.centerPhone} onChange={this.handleChange.bind(this)}/>
                                                   </Col>
                                                 </FormGroup>
-                                                 </Form>
-                                             </Tab>
-                                            {/*THE OTHER TAB*/}
-                                             <Tab eventKey={2} title="Existing Medical Center">
-                                                 <Form style={{marginTop: '1em'}} horizontal className="logForm">
-                                                     <FormGroup controlId="formSpecialty">
-                                                            <Col componentClass={ControlLabel} sm={12}>
-                                                                 <FormControl componentClass="select" name="selectedCenter" placeholder="Select Medical Center" onChange={this.handleChange.bind(this)}>
-                                                                     <option value={""} />
-                                                                     {
-                                                                         localStore.allCenters.map((i)=> {
-                                                                             return <option value={i.name} key={i.id}> {i.name} </option>
-                                                                         })
-                                                                     }
-                                                                 </FormControl>
-                                                             </Col>
-                                                     </FormGroup>
+                                                    <FormGroup controlId="formControlsTextarea">
+                                                        <Col componentClass={ControlLabel} sm={4}>
+                                                           Service Description
+                                                        </Col>
+                                                        <Col sm={10} md={8}>
+                                                            <FormControl style={{minHeight: '20em'}} componentClass="textarea" name="centerDescription" placeholder="Description" value={this.state.centerDescription} onChange={this.handleChange.bind(this)}/>
+                                                        </Col>
+                                                    </FormGroup>
                                                  </Form>
                                              </Tab>
                                         </Tabs>
                                     </Modal.Body>
                                     <Modal.Footer>
                                         <Button type="submit" bsSize="small" className="formBtn1"
-                                                name="setMedCenter" onClick={this.setMedicalCenter.bind(this)}>
-                                            Set Medical Center
+                                                name="setMedCenter" onClick={this.setMedicalCenterInfo.bind(this)}>
+                                            Set Information
                                         </Button>
                                     </Modal.Footer>
                                  </Modal>
@@ -347,9 +389,6 @@ import dbuser from '../../../../../api/src/models/users.js';
                                 {/* END DOCTOR PART*/}
                             </div>
                         </Tab>
-
-
-
 
 
                         <Tab eventKey={2} title="Appointments">
