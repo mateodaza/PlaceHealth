@@ -73,23 +73,27 @@ import dbuser from '../../../../../api/src/models/users.js';
                     </Navbar.Brand>
                     {
                         localStore.isLogged ? (
-                            <LinkContainer to={'/'}>
-                                <Navbar.Form pullRight className="navbarLog">
-                                    <a href="#" style={{color: 'whitesmoke'}} onClick={this.logout.bind(this)}>
-                                        <p>Logout</p>
-                                        <MdAccountBox size={34} color='whitesmoke'/>
-                                    </a>
-                                </Navbar.Form>
-                            </LinkContainer>
+                            <Navbar.Brand>
+                                <LinkContainer to={'/'}>
+                                    <Navbar.Form pullRight className="navbarLog">
+                                        <a href="#" style={{color: 'whitesmoke'}} onClick={this.logout.bind(this)}>
+                                            <p>Logout</p>
+                                            <MdAccountBox size={34} color='whitesmoke'/>
+                                        </a>
+                                    </Navbar.Form>
+                                </LinkContainer>
+                            </Navbar.Brand>
                         ): (
-                            <LinkContainer to={'/login'}>
-                                <Navbar.Form pullRight className="navbarLog">
-                                    <a href="#" style={{color: 'whitesmoke'}}>
-                                        <p>Login</p>
-                                        <MdAccountBox size={34} color='whitesmoke'/>
-                                    </a>
-                                </Navbar.Form>
-                            </LinkContainer>
+                            <Navbar.Brand>
+                                <LinkContainer to={'/login'}>
+                                    <Navbar.Form pullRight className="navbarLog">
+                                        <a href="#" style={{color: 'whitesmoke'}}>
+                                            <p>Login</p>
+                                            <MdAccountBox size={34} color='whitesmoke'/>
+                                        </a>
+                                    </Navbar.Form>
+                                </LinkContainer>
+                            </Navbar.Brand>
                         )
                     }
 
@@ -127,7 +131,7 @@ import dbuser from '../../../../../api/src/models/users.js';
                             <FormGroup style={{marginLeft: '1em'}}>
                                 <a onClick={ ()=>{window.location = ('/#/search/'+localStore.navSearchItem.replace(/\s/g, ''));
                                                         window.location.reload();}}>
-                                    <MdSearch size={22} color='whitesmoke'/>
+                                     <MdSearch size={22} color='whitesmoke'/>
                                 </a>
                             </FormGroup>
                         </div>

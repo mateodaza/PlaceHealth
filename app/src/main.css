@@ -26,6 +26,7 @@ body {
     padding: 0;
     border-radius: 0;
     width: 100%;
+    max-height: 2em;
     font-size: 1em;
     background-color: transparent;
     border-color: transparent;
@@ -148,7 +149,16 @@ body {
     width:100%;
     border-radius:2px 2px 0px 0px;
 }
-
+#tooltip > .tooltip-inner {
+    background-color: rgba(10,42,79,0.8);
+    color: whitesmoke;
+}
+#tooltip > .tooltip-arrow {
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    border-left-color: transparent;
+}
 
 
 

@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ebbb5d4-6a90-4402-9c80-05731aec2c03" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/AppointmentModal.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/src/models/users.js" afterPath="$PROJECT_DIR$/api/src/models/users.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/AutoSuggest.jsx" afterPath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/AutoSuggest.jsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/Navbar.jsx" afterPath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/Navbar.jsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/SearchResult.jsx" afterPath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/SearchResult.jsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main.css" afterPath="$PROJECT_DIR$/app/src/main.css" />
@@ -19,14 +22,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SearchResult.jsx" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/front/components/Pages/ReactComponents/SearchResult.jsx">
+      <file leaf-file-name="AppointmentModal.jsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/front/components/Pages/ReactComponents/AppointmentModal.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="19" column="24" lean-forward="false" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+            <state relative-caret-position="152">
+              <caret line="34" column="39" lean-forward="true" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="39" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="users.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/src/models/users.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="246">
+              <caret line="223" column="24" lean-forward="false" selection-start-line="223" selection-start-column="19" selection-end-line="223" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -42,8 +55,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>list and</find>
-      <find>Select</find>
       <find>special</find>
       <find>specialties</find>
       <find>console.log</find>
@@ -72,6 +83,8 @@
       <find>method</find>
       <find>searc</find>
       <find>onChange</find>
+      <find>value</find>
+      <find>Especia</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -120,9 +133,10 @@
         <option value="$PROJECT_DIR$/app/front/index.jsx" />
         <option value="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/AutoSuggest.jsx" />
         <option value="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/Navbar.jsx" />
+        <option value="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/SearchResult.jsx" />
         <option value="$PROJECT_DIR$/app/src/main.css" />
         <option value="$PROJECT_DIR$/api/src/models/users.js" />
-        <option value="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/SearchResult.jsx" />
+        <option value="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/AppointmentModal.jsx" />
       </list>
     </option>
   </component>
@@ -159,7 +173,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -239,6 +252,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -312,11 +326,12 @@
       <workItem from="1508733944267" duration="3283000" />
       <workItem from="1508771838634" duration="13553000" />
       <workItem from="1508816484528" duration="3393000" />
+      <workItem from="1508855307895" duration="16074000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="200849000" />
+    <option name="totallyTimeSpent" value="216923000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="23" width="1213" height="777" extended-state="0" />
@@ -354,13 +369,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/api/src/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/front/components/Pages/ReactComponents/Navbar.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -571,7 +579,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -617,8 +624,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/front/components/Pages/ReactComponents/AutoSuggest.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="102" column="16" lean-forward="false" selection-start-line="102" selection-start-column="16" selection-end-line="102" selection-end-column="16" />
+        <state relative-caret-position="-417">
+          <caret line="66" column="10" lean-forward="false" selection-start-line="66" selection-start-column="10" selection-end-line="66" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/front/components/Pages/ReactComponents/Navbar.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="95" column="43" lean-forward="false" selection-start-line="95" selection-start-column="43" selection-end-line="95" selection-end-column="43" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -627,42 +644,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="191" column="18" lean-forward="false" selection-start-line="191" selection-start-column="18" selection-end-line="191" selection-end-column="18" />
+        <state relative-caret-position="290">
+          <caret line="159" column="34" lean-forward="false" selection-start-line="159" selection-start-column="34" selection-end-line="159" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/front/components/Pages/ReactComponents/Navbar.jsx">
+    <entry file="file://$PROJECT_DIR$/app/front/components/Pages/ReactComponents/SearchResult.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="128" column="56" lean-forward="false" selection-start-line="128" selection-start-column="56" selection-end-line="128" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/src/models/users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="212" column="37" lean-forward="false" selection-start-line="212" selection-start-column="37" selection-end-line="212" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/front/components/Pages/General/Dashboard.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="946">
-          <caret line="151" column="19" lean-forward="false" selection-start-line="151" selection-start-column="19" selection-end-line="151" selection-end-column="44" />
+        <state relative-caret-position="-257">
+          <caret line="12" column="48" lean-forward="true" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/front/components/Pages/ReactComponents/SearchResult.jsx">
+    <entry file="file://$PROJECT_DIR$/app/front/components/Pages/General/Dashboard.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="19" column="24" lean-forward="false" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+        <state relative-caret-position="209">
+          <caret line="101" column="26" lean-forward="true" selection-start-line="98" selection-start-column="35" selection-end-line="101" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/src/models/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="223" column="24" lean-forward="false" selection-start-line="223" selection-start-column="19" selection-end-line="223" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/front/components/Pages/ReactComponents/AppointmentModal.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="34" column="39" lean-forward="true" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="39" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

@@ -64,6 +64,7 @@ function getSectionSuggestions(section) {
             value: '',
             suggestions: []
         };
+        //localStore.navSearchItem = '';
     }
 
     onChange = (event, { newValue, method }) => {
