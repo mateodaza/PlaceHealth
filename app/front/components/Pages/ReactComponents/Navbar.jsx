@@ -117,7 +117,7 @@ import dbuser from '../../../../../api/src/models/users.js';
                         }
                         <div onKeyPress={event => {
                             if (event.key === "Enter") {
-                                window.location.replace('/search/'+localStore.navSearchItem.replace(/\s/g, ''));
+                                window.location=('/#/search/'+localStore.navSearchItem.replace(/\s/g, ''));
                                 window.location.reload();
                             }
                         }}>
@@ -125,11 +125,10 @@ import dbuser from '../../../../../api/src/models/users.js';
                                 <Suggest/>
                             </FormGroup>
                             <FormGroup style={{marginLeft: '1em'}}>
-                                <LinkContainer to={'/search/'+localStore.navSearchItem.replace(/\s/g, '')}>
-                                    <a onClick={()=>window.location.reload()}>
-                                        <MdSearch size={22} color='whitesmoke'/>
-                                    </a>
-                                </LinkContainer>
+                                <a onClick={ ()=>{window.location = ('/#/search/'+localStore.navSearchItem.replace(/\s/g, ''));
+                                                        window.location.reload();}}>
+                                    <MdSearch size={22} color='whitesmoke'/>
+                                </a>
                             </FormGroup>
                         </div>
                     </Navbar.Form>

@@ -4,24 +4,23 @@ import { PageHeader, ListGroup, ListGroupItem, Accordion, Panel } from 'react-bo
 import { observer } from 'mobx-react';
 import localStore from '../../../../src/localStore.js'
 import Navbar from './Navbar.jsx';
-
-let results = [{
-      id: '1',
-      name: 'Result 1',
-      info: 'Description of result 1'
-    },
-    {
-      id: '2',
-      name: 'Result 2',
-      info: 'Description of result 2'
-    }];
+//Database
+import dbuser from '../../../../../api/src/models/users.js';
 
 @observer export default class SearchResult extends React.Component {
     constructor(){
         super();
         this.state = {
             searchItem: localStore.navSearchItem,
+            searchResult: []
         };
+    }
+
+    componentDidMount(){
+        let user = new dbuser();
+        user.getInfoSearh(localStore.navSearchItem, function(result) {
+            this.setState({searchResult: result});
+        }.bind(this));
     }
 
     render() {
@@ -30,16 +29,18 @@ let results = [{
                 <Navbar type="navbar loginNavbar"/>
                 <div className="divContainer">
                     <PageHeader className="pageHeader"> Results for <q>{this.state.searchItem}</q> </PageHeader>
-
-                    <Accordion className="searchResults">
+                    <ListGroup>
                         {
-                            results.map(function(listValue){
-                                return <Panel header={listValue.name} key={listValue.id} eventKey={listValue.id}>
-                                    {listValue.info}
-                                </Panel>
-                            })
+                            Object.keys(this.state.searchResult).length !== 0 &&(
+                                  this.state.searchResult.map((i)=>{
+                                    return <ListGroupItem>
+                                        <a>{i.m.name} - {i.r.type} - {i.n.name}</a>
+                                    </ListGroupItem>
+                                })
+                            )
                         }
-                    </Accordion>
+
+                    </ListGroup>
                 </div>
             </div>
         )

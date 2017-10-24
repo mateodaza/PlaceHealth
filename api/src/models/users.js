@@ -206,4 +206,19 @@ export default class clients {
         });
     }
 
+    getInfoSearh(name, callback){
+        //Lon.*'
+        let cypherQuery = "MATCH (n {name: {name}})-[r]-(m) " +
+                        "WHERE n.type =~ 's.*' " +
+                        "RETURN n,r,m";
+        db.query(cypherQuery, {name: name}, function(err, results) {
+            if (err) {
+                return callback(err);
+            } else {
+                let result = results;
+                return callback(result);
+            }
+        });
+    }
+
 }
