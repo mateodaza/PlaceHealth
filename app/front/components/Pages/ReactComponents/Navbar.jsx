@@ -3,11 +3,13 @@ import { Navbar, Nav, NavItem, NavDropdown, MenuItem, FormGroup, FormControl, Bu
 import { LinkContainer } from 'react-router-bootstrap';
 import MdAccountBox from 'react-icons/lib/md/account-box';
 import MdSearch from 'react-icons/lib/md/search';
+import Suggest from './AutoSuggest.jsx';
 
 import { observer } from 'mobx-react';
 import localStore from '../../../../src/localStore.js';
 
-import auth from '../../../../src/auth.js';
+//Database
+import dbuser from '../../../../../api/src/models/users.js';
 
 @observer export default class MainHomeNavbar extends React.Component {
     constructor(){
@@ -17,12 +19,30 @@ import auth from '../../../../src/auth.js';
         };
     }
 
-    handleSearchItemChange(e) {
-        this.setState({searchItem: e.target.value});
+    componentDidMount(){
+        //Get Info for looking up stuff
+        let user = new dbuser();
+        let stuff = {Service: [], Specialty: [] };
+
+        user.getAllServices((result) =>{
+            result.map((i)=> {
+                stuff.Service.push(i.name);
+            });
+            user.getAllSpecialties((res)=>{
+                res.map((i)=> {
+                    stuff.Specialty.push(i.name);
+                })
+                localStore.searchSuggestions = stuff;
+            });
+        })
+
     }
 
-    search(){
-        localStore.navSearchItem = this.state.searchItem;
+
+
+
+    handleSearchItemChange(e) {
+        this.setState({searchItem: e.target.value});
     }
 
     logout(){
@@ -74,23 +94,44 @@ import auth from '../../../../src/auth.js';
                     }
 
                     <Navbar.Form pullRight>
-                        <FormGroup>
-                            <FormControl type="input" placeholder="Search" value={this.state.searchItem}
-                                         onChange={this.handleSearchItemChange.bind(this)}
-                                         onKeyPress={event => {
-                                             if (event.key === "Enter") {
-                                                 this.search();
-                                                 window.location.replace("/#/search");
-                                             }
-                                         }}
-                            />
-                            {' '}
-                            <LinkContainer to={'/search'}>
-                                <a onClick={this.search.bind(this)}>
-                                    <MdSearch size={22} color='whitesmoke'/>
-                                </a>
-                            </LinkContainer>
-                        </FormGroup>
+                        {
+                            /*
+                            <FormGroup>
+                                <FormControl type="input" placeholder="Search" value={this.state.searchItem}
+                                             onChange={this.handleSearchItemChange.bind(this)}
+                                             onKeyPress={event => {
+                                                 if (event.key === "Enter") {
+                                                     this.search();
+                                                     window.location.replace("/#/search");
+                                                 }
+                                             }}
+                                />
+                                {' '}
+                                <LinkContainer to={'/search'}>
+                                    <a onClick={this.search.bind(this)}>
+                                        <MdSearch size={22} color='whitesmoke'/>
+                                    </a>
+                                </LinkContainer>
+                            </FormGroup>
+                             */
+                        }
+                        <div onKeyPress={event => {
+                            if (event.key === "Enter") {
+                                window.location.replace('/search/'+localStore.navSearchItem.replace(/\s/g, ''));
+                                window.location.reload();
+                            }
+                        }}>
+                            <FormGroup>
+                                <Suggest/>
+                            </FormGroup>
+                            <FormGroup style={{marginLeft: '1em'}}>
+                                <LinkContainer to={'/search/'+localStore.navSearchItem.replace(/\s/g, '')}>
+                                    <a onClick={()=>window.location.reload()}>
+                                        <MdSearch size={22} color='whitesmoke'/>
+                                    </a>
+                                </LinkContainer>
+                            </FormGroup>
+                        </div>
                     </Navbar.Form>
                 </Navbar>
             </div>

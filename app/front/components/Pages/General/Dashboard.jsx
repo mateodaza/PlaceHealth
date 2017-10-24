@@ -107,6 +107,8 @@ import dbuser from '../../../../../api/src/models/users.js';
         let user = new dbuser();
         user.findUser(localStore.userEmail, function (data){
             this.setState({type : data[Object.keys(data)[1]][0], userData: data.n});
+            //update component
+            this.setState();
         }.bind(this));
 
         //Get All INFO
@@ -114,6 +116,7 @@ import dbuser from '../../../../../api/src/models/users.js';
             this.setState({allUserData: data});
             //CheckInfo
             this.checkInfo();
+            this.setState();
         }.bind(this));
 
         //Get All Centers
@@ -250,7 +253,7 @@ import dbuser from '../../../../../api/src/models/users.js';
                                                     </ListGroup>
                                                 </div>
                                                 <Button type="submit" style={{float: 'right'}} bsSize="lg" className="formBtn1"
-                                                         name="showUpdateInfoModal" onClick={this.open.bind(this)}>
+                                                         name="showSpecialtyModal" onClick={this.open.bind(this)}>
                                                             Add New Specialty
                                                 </Button>
                                             </Col>
@@ -273,16 +276,18 @@ import dbuser from '../../../../../api/src/models/users.js';
                                             <Col xsHidden md={4} >
                                                 <h3> Services </h3>
                                                 <div style={{marginBottom: '1em'}}>
+                                                    <ListGroup>
                                                     {
                                                         this.state.allUserData.map((i)=>{
                                                             let j=i[Object.keys(i)[2]];
                                                             if(j.type === 'service') {
-                                                                return <div key={j.id}>
+                                                                return <ListGroupItem key={j.id}>
                                                                     <h4> {j.name}</h4>
-                                                                </div>
+                                                                </ListGroupItem>
                                                             }
                                                         })
                                                     }
+                                                    </ListGroup>
                                                 </div>
                                                 <Button type="submit" bsSize="small" className="formBtn1"
                                                         name="showServiceModal" onClick={this.open.bind(this)}>
@@ -292,16 +297,18 @@ import dbuser from '../../../../../api/src/models/users.js';
                                             <Col xsHidden md={4} >
                                                 <h3> Specialties </h3>
                                                 <div style={{marginBottom: '1em'}}>
+                                                    <ListGroup>
                                                     {
                                                         this.state.allUserData.map((i)=>{
                                                             let j=i[Object.keys(i)[2]];
                                                             if(j.type === 'specialty') {
-                                                                return <div key={j.id}>
+                                                                return <ListGroupItem key={j.id}>
                                                                     <h4> {j.name}</h4>
-                                                                </div>
+                                                                </ListGroupItem>
                                                             }
                                                         })
                                                     }
+                                                    </ListGroup>
                                                 </div>
                                                 <Button type="submit" bsSize="small" className="formBtn1"
                                                         name="showSpecialtyModal" onClick={this.open.bind(this)}>

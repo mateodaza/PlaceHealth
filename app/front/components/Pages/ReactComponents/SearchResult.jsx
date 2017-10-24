@@ -17,21 +17,30 @@ let results = [{
     }];
 
 @observer export default class SearchResult extends React.Component {
+    constructor(){
+        super();
+        this.state = {
+            searchItem: localStore.navSearchItem,
+        };
+    }
+
     render() {
         return (
-            <div className="divContainer">
+            <div >
                 <Navbar type="navbar loginNavbar"/>
-                <PageHeader className="pageHeader"> Results for <q>{localStore.navSearchItem}</q> </PageHeader>
+                <div className="divContainer">
+                    <PageHeader className="pageHeader"> Results for <q>{this.state.searchItem}</q> </PageHeader>
 
-                <Accordion className="searchResults">
-                    {
-                        results.map(function(listValue){
-                            return <Panel header={listValue.name} key={listValue.id} eventKey={listValue.id}>
-                                {listValue.info}
-                            </Panel>
-                        })
-                    }
-                </Accordion>
+                    <Accordion className="searchResults">
+                        {
+                            results.map(function(listValue){
+                                return <Panel header={listValue.name} key={listValue.id} eventKey={listValue.id}>
+                                    {listValue.info}
+                                </Panel>
+                            })
+                        }
+                    </Accordion>
+                </div>
             </div>
         )
     }

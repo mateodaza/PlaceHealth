@@ -87,6 +87,31 @@ export default class clients {
         });
     }
 
+    getAllServices(callback){
+        let cypherQuery = "MATCH (n:Service) RETURN n ";
+        db.query(cypherQuery, function(err, results) {
+            if (err) {
+                return callback(err);
+            } else {
+                let result = results;
+                return callback(result);
+            }
+        });
+    }
+
+    getAllSpecialties(callback){
+        let cypherQuery = "MATCH (n:Specialty) RETURN n ";
+        db.query(cypherQuery, function(err, results) {
+            if (err) {
+                return callback(err);
+            } else {
+                let result = results;
+                return callback(result);
+            }
+        });
+    }
+
+
     setDocToExistingCenter(docEmail, centerName, callback){
         let cypherQuery = "MATCH (n:Doctor {email: {docEmail} }) " +
                         "MERGE (t:Center {name: {centerName}}) "+

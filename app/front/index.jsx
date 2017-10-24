@@ -35,7 +35,7 @@ import SignUp from './components/Pages/General/SignUp.jsx';
           <Switch>
             <Route exact path="/" component={Home}/>
             <Route path='/login' component={Login}/>
-            <Route path='/search' component={Search}/>
+            <Route path='/search/*' component={Search}/>
             <Route path='/signup' component={SignUp}/>
             <Route path="/auth" render={() => (
                 this.loggedIn() ? (

@@ -6,8 +6,7 @@ const defaultUser = {
     isLogged: false,
     userEmail: '',
     allCenters: [],
-    allSpecialties: [],
-    allServices: []
+    searchSuggestions: [],
 };
 
 const observableUser = storedObservable('user', defaultUser, 500);
