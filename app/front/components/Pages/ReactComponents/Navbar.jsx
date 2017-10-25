@@ -129,7 +129,7 @@ import dbuser from '../../../../../api/src/models/users.js';
                                 <Suggest/>
                             </FormGroup>
                             <FormGroup style={{marginLeft: '1em'}}>
-                                <a onClick={ ()=>{window.location = ('/#/search/'+localStore.navSearchItem.replace(/\s/g, ''));
+                                <a href="#" onClick={ ()=>{window.location = ('/#/search/'+localStore.navSearchItem.replace(/\s/g, ''));
                                                         window.location.reload();}}>
                                      <MdSearch size={22} color='whitesmoke'/>
                                 </a>

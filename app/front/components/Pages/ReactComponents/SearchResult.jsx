@@ -46,23 +46,42 @@ const tooltip = (
             <div>
                 <Navbar type="navbar loginNavbar"/>
                 <div className="divContainer">
-                    <PageHeader className="p
-                    ageHeader"> Results for <q>{this.state.searchItem}</q> </PageHeader>
+                    <PageHeader className="pageHeader"> Results for {this.state.searchItem} </PageHeader>
                     <ListGroup>
+                        <div className="searchContainer">
                         {
                             Object.keys(this.state.searchResult).length !== 0 &&(
                                   this.state.searchResult.map((i, index)=>{
                                     return <ListGroupItem key={i.r.id}>
-                                              <span> {i.m.name}  {i.r.type}  {i.n.name}</span>
+                                        <div className='searchContainerStuff'>
+                                              {
+                                                  i.m.address !== undefined ?(
+                                                      <div>
+                                                          <h4 style={{marginBottom:'0'}}><strong> {i.m.name} </strong></h4>
+                                                          <h4>{i.r.type}  {i.n.name}</h4>
+                                                          <p> <strong>Address: </strong>{i.m.address}</p>
+                                                            <p> <strong>Phone Number: </strong>{i.m.phone}</p>
+                                                      </div>
+                                                  ):(
+                                                      <div>
+                                                          <h4 style={{marginBottom:'0'}}><strong> Dr. {i.m.name} </strong></h4>
+                                                          <h4>{i.r.type}  {i.n.name}</h4>
+                                                          <p> <strong>Address: </strong>{i.r.properties.address}</p>
+                                                          <p> <strong>Phone Number: </strong>{i.r.properties.phone}</p>
+                                                      </div>
+                                                  )
+                                              }
+                                        </div>
                                               <div><br/>
                                                   <OverlayTrigger placement="right" overlay={tooltip}>
-                                                     <Button bsSize="small" value={index} onClick={this.open.bind(this)}> Contact </Button>
+                                                     <Button bsSize="large" value={index} onClick={this.open.bind(this)}> Contact </Button>
                                                   </OverlayTrigger>
                                               </div>
                                           </ListGroupItem>
                                 })
                             )
                         }
+                        </div>
                         {
                             this.state.openModal === true &&(
                                 <Modal show={true} item={this.state.clickedItem} onHide={this.close.bind(this)}/>

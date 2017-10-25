@@ -117,7 +117,7 @@ body {
     align-items: center;
 }
 .pageHeader{
-    color: darkgrey;
+    color: rgba(10,42,79,0.8);
     padding-left: 5%;
 }
 .sectionHeader{
@@ -135,7 +135,7 @@ body {
     color: darkgrey;
 }
 .formBtn1{
-    color: white;
+    color: whitesmoke;
     background-color: rgba(10,42,79,0.5);
 }
 .formBtn2{
@@ -160,6 +160,54 @@ body {
     border-left-color: transparent;
 }
 
+.appointmentContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 15px;
+    width: auto;
+    height: auto;
+    justify-content: center;
+    color: lightslategrey;
+}
+.appointmentContainerStuff{
+    margin:0;
+    min-width: 35em;
+    color: dimgrey;
+}
+.infoContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: auto;
+    height: auto;
+    justify-content: space-around;
+    color: lightslategrey;
+}
+.searchContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: auto;
+    height: auto;
+    justify-content: flex-start;
+    color: lightslategrey;
+}
+.infoContainerStuff{
+    width: auto;
+    height: auto;
+    min-width: 25em;
+    min-height: 20em;
+    color: dimgrey;
+}
+
+.searchContainerStuff{
+    width: auto;
+    height: auto;
+    min-width: 25em;
+    min-height: 10em;
+    color: dimgrey;
+}
 
 
 
@@ -203,6 +251,7 @@ body {
     width: 15em;
     border: 1px solid #aaa;
     background-color: #fff;
+    padding: 5px;
     /*font-family: Helvetica, sans-serif;*/
     font-weight: 300;
     font-size: 16px;

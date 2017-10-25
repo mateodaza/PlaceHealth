@@ -16,7 +16,7 @@ import localStore from '../../../../src/localStore.js'
                             Expect a truly great experience. </h2>
                     </div>
                 </section>
-                <section style={{backgroundColor: 'rgba(10,42,79,0.8)', color: 'whitesmoke', paddingTop:'0', paddingBottom:'2em', paddingLeft:'2em', paddingRight:'2em'}}>
+                <section style={{backgroundColor: 'rgba(10,42,79,0.7)', color: 'whitesmoke', paddingTop:'0', paddingBottom:'2em', paddingLeft:'2em', paddingRight:'2em'}}>
                     <h3>News</h3>
                     <Timeline
                         dataSource={{

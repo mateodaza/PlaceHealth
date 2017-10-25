@@ -34,7 +34,9 @@ import dbuser from '../../../../../api/src/models/users.js';
             selectedSpecialty: '',
             selectedService: '',
             clickedSpecialty: '',
-            clickedSpecialtyInfo: []
+            clickedSpecialtyInfo: [],
+
+            appointments: []
         }
         this.getData();
     }
@@ -128,6 +130,9 @@ import dbuser from '../../../../../api/src/models/users.js';
         //Get All Services
         this.getServices();
 
+        //Get All Appointments
+        this.getAppointments();
+
     }
 
     openSetSpecialty(e){
@@ -186,6 +191,14 @@ import dbuser from '../../../../../api/src/models/users.js';
         }.bind(this));
     }
 
+    getAppointments(){
+        let user = new dbuser();
+        user.getAppointments(localStore.userEmail, function (data){
+            this.setState({appointments: data});
+            console.log(this.state.appointments);
+        }.bind(this));
+    }
+
     updateCenterInfo(){
         let user = new dbuser();
         user.updateCenterInfo(localStore.userEmail, this.state.newCenterAddress, this.state.newCenterPhone,function (data){
@@ -202,7 +215,7 @@ import dbuser from '../../../../../api/src/models/users.js';
                     <PageHeader className="pageHeader"> Welcome </PageHeader>
 
                     <Tabs defaultActiveKey={1} id="noanim-tab-example">
-                        <Tab eventKey={1} title="Profile">
+                        <Tab eventKey={1} title={<h4> Profile </h4>}>
                             <div className="divContainer">
                                 {
                                     this.state.checkInfo === true &&(
@@ -215,12 +228,14 @@ import dbuser from '../../../../../api/src/models/users.js';
 
                                 {
                                     this.state.type === 'Doctor'?(
-                                        <div>
-                                            <Col xs={6} md={4} >
-                                                <h3> General Info </h3>
-                                                <h3> Name: <span style={{color: 'grey'}}> {this.state.userData.name} </span></h3>
-                                                <h3> Email: <span style={{color: 'grey'}}>  {localStore.userEmail} </span></h3>
-                                            </Col>
+                                        <div className="infoContainer">
+                                                <ListGroupItem>
+                                                    <div className='infoContainerStuff'>
+                                                        <h3 style={{color: 'rgba(10,42,79,0.8)'}}> General Info </h3><br/>
+                                                        <h3> Name: <span style={{color: 'grey'}}> {this.state.userData.name} </span></h3>
+                                                        <h3> Email: <span style={{color: 'grey'}}>  {localStore.userEmail} </span></h3>
+                                                    </div>
+                                                </ListGroupItem>
                                             { /*
                                                 <Button type="submit" bsSize="small" className="formBtn1"
                                                         name="showCenterModal" onClick={this.open.bind(this)}>
@@ -228,93 +243,101 @@ import dbuser from '../../../../../api/src/models/users.js';
                                                 </Button>
                                             */
                                             }
-                                            <Col xsHidden md={8} >
-                                                <h3> Specialties </h3>
-                                                <div style={{marginBottom: '1em'}}>
-                                                    <ListGroup>
-                                                    {
-                                                        this.state.allUserData.map((i)=>{
-                                                            let j=i[Object.keys(i)[2]];
-                                                            let k=i[Object.keys(i)[1]].properties;
-                                                            if(j.type === 'specialty'){
-                                                                return  <div key={j.id}>
-                                                                            <ListGroupItem key={j.id} >
-                                                                                 <h3>{j.name}</h3>
-                                                                                <h4> <strong>Medical Center Name:</strong> {k.name}</h4>
-                                                                                <h4> <strong>Medical Center Address:</strong> {k.address}</h4>
-                                                                                <h4> <strong>Medical Center Phone Number:</strong> {k.phone}</h4>
-                                                                                <h4> <strong>Service Description:</strong> {k.description}</h4>
-                                                                                <Button value={j.name} onClick={this.openSetSpecialty.bind(this)}> Edit </Button>
-                                                                            </ListGroupItem>
-                                                                        </div>
-                                                            }
-                                                        })
-                                                    }
-                                                    </ListGroup>
-                                                </div>
-                                                <Button type="submit" style={{float: 'right'}} bsSize="lg" className="formBtn1"
-                                                         name="showSpecialtyModal" onClick={this.open.bind(this)}>
-                                                            Add New Specialty
-                                                </Button>
-                                            </Col>
+                                                <ListGroupItem >
+                                                    <div className='infoContainerStuff'>
+                                                    <h3 style={{color: 'rgba(10,42,79,0.8)'}}> Specialties </h3><br/>
+                                                    <div style={{marginBottom: '1em'}}>
+                                                        <ListGroup>
+                                                        {
+                                                            this.state.allUserData.map((i)=>{
+                                                                let j=i[Object.keys(i)[2]];
+                                                                let k=i[Object.keys(i)[1]].properties;
+                                                                if(j.type === 'specialty'){
+                                                                    return  <div key={j.id}>
+                                                                                <ListGroupItem key={j.id} >
+                                                                                     <h3>{j.name}</h3>
+                                                                                    <h4> <strong>Medical Center Name:</strong> {k.name}</h4>
+                                                                                    <h4> <strong>Medical Center Address:</strong> {k.address}</h4>
+                                                                                    <h4> <strong>Medical Center Phone Number:</strong> {k.phone}</h4>
+                                                                                    <h4> <strong>Service Description:</strong> {k.description}</h4>
+                                                                                    <Button value={j.name} onClick={this.openSetSpecialty.bind(this)}> Edit </Button>
+                                                                                </ListGroupItem>
+                                                                            </div>
+                                                                }
+                                                            })
+                                                        }
+                                                        </ListGroup>
+                                                    </div>
+                                                    <Button type="submit" style={{float: 'right', margin: '8px'}} bsSize="lg" className="formBtn1"
+                                                             name="showSpecialtyModal" onClick={this.open.bind(this)}>
+                                                                Add New Specialty
+                                                    </Button>
+                                                    </div>
+                                                </ListGroupItem>
                                         </div>
                                     ):(
 
                                         //MEDICAL CENTER
-                                        <div>
-                                            <Col xs={6} md={4} >
-                                                <h3> General Info </h3>
-                                                <h3> Name: <span style={{color: 'grey'}}> {this.state.userData.name} </span></h3>
-                                                <h3> Email: <span style={{color: 'grey'}}>  {localStore.userEmail} </span></h3>
-                                                <h3> Address: <span style={{color: 'grey'}}> {this.state.userData.address} </span></h3>
-                                                <h3> Phone Number: <span style={{color: 'grey'}}>  {this.state.userData.phone} </span></h3>
-                                                <Button type="submit" bsSize="small" className="formBtn1"
-                                                        name="showUpdateInfoModal" onClick={this.open.bind(this)}>
-                                                    Update Info
-                                                </Button>
-                                            </Col>
-                                            <Col xsHidden md={4} >
-                                                <h3> Services </h3>
-                                                <div style={{marginBottom: '1em'}}>
-                                                    <ListGroup>
-                                                    {
-                                                        this.state.allUserData.map((i)=>{
-                                                            let j=i[Object.keys(i)[2]];
-                                                            if(j.type === 'service') {
-                                                                return <ListGroupItem key={j.id}>
-                                                                    <h4> {j.name}</h4>
-                                                                </ListGroupItem>
+                                        <div className="infoContainer">
+                                                <ListGroupItem >
+                                                    <div className='infoContainerStuff'>
+                                                        <h3 style={{color: 'rgba(10,42,79,0.8)'}}> General Info </h3><br/>
+                                                        <h3> Name: <span style={{color: 'grey'}}> {this.state.userData.name} </span></h3>
+                                                        <h3> Email: <span style={{color: 'grey'}}>  {localStore.userEmail} </span></h3>
+                                                        <h3> Address: <span style={{color: 'grey'}}> {this.state.userData.address} </span></h3>
+                                                        <h3> Phone Number: <span style={{color: 'grey'}}>  {this.state.userData.phone} </span></h3>
+                                                        <Button style={{margin: '8px'}} type="submit" bsSize="small" className="formBtn1"
+                                                                name="showUpdateInfoModal" onClick={this.open.bind(this)}>
+                                                            Update Info
+                                                        </Button>
+                                                    </div>
+                                                </ListGroupItem>
+                                                <ListGroupItem >
+                                                    <div className='infoContainerStuff'>
+                                                        <h3 style={{color: 'rgba(10,42,79,0.8)'}}> Services </h3><br/>
+                                                        <div style={{marginBottom: '1em'}}>
+                                                            <ListGroup>
+                                                            {
+                                                                this.state.allUserData.map((i)=>{
+                                                                    let j=i[Object.keys(i)[2]];
+                                                                    if(j.type === 'service') {
+                                                                        return <ListGroupItem key={j.id}>
+                                                                            <h4> {j.name}</h4>
+                                                                        </ListGroupItem>
+                                                                    }
+                                                                })
                                                             }
-                                                        })
-                                                    }
-                                                    </ListGroup>
-                                                </div>
-                                                <Button type="submit" bsSize="small" className="formBtn1"
-                                                        name="showServiceModal" onClick={this.open.bind(this)}>
-                                                    Add New Service
-                                                </Button>
-                                            </Col>
-                                            <Col xsHidden md={4} >
-                                                <h3> Specialties </h3>
-                                                <div style={{marginBottom: '1em'}}>
-                                                    <ListGroup>
-                                                    {
-                                                        this.state.allUserData.map((i)=>{
-                                                            let j=i[Object.keys(i)[2]];
-                                                            if(j.type === 'specialty') {
-                                                                return <ListGroupItem key={j.id}>
-                                                                    <h4> {j.name}</h4>
-                                                                </ListGroupItem>
+                                                            </ListGroup>
+                                                        </div>
+                                                        <Button style={{margin: '8px'}} type="submit" bsSize="small" className="formBtn1"
+                                                                name="showServiceModal" onClick={this.open.bind(this)}>
+                                                            Add New Service
+                                                        </Button>
+                                                    </div>
+                                                </ListGroupItem>
+                                                <ListGroupItem >
+                                                    <div className='infoContainerStuff'>
+                                                        <h3 style={{color: 'rgba(10,42,79,0.8)'}}> Specialties </h3><br/>
+                                                        <div style={{marginBottom: '1em'}}>
+                                                            <ListGroup>
+                                                            {
+                                                                this.state.allUserData.map((i)=>{
+                                                                    let j=i[Object.keys(i)[2]];
+                                                                    if(j.type === 'specialty') {
+                                                                        return <ListGroupItem key={j.id}>
+                                                                            <h4> {j.name}</h4>
+                                                                        </ListGroupItem>
+                                                                    }
+                                                                })
                                                             }
-                                                        })
-                                                    }
-                                                    </ListGroup>
-                                                </div>
-                                                <Button type="submit" bsSize="small" className="formBtn1"
-                                                        name="showSpecialtyModal" onClick={this.open.bind(this)}>
-                                                    Add New Specialty
-                                                </Button>
-                                            </Col>
+                                                            </ListGroup>
+                                                        </div>
+                                                        <Button type="submit" style={{margin: '8px'}} bsSize="small" className="formBtn1"
+                                                                name="showSpecialtyModal" onClick={this.open.bind(this)}>
+                                                            Add New Specialty
+                                                        </Button>
+                                                    </div>
+                                                </ListGroupItem>
                                         </div>
                                     )
                                 }
@@ -481,8 +504,23 @@ import dbuser from '../../../../../api/src/models/users.js';
                         </Tab>
 
 
-                        <Tab eventKey={2} title="Appointments">
-                            Tab 2 content
+                        <Tab eventKey={2} title={<h4> Appointments </h4>}>
+                            <div className="appointmentContainer">
+                                {
+                                    Object.keys(this.state.appointments).length !== 0 &&(
+                                        this.state.appointments.map((i, index)=>{
+                                            return <ListGroupItem key={i.r.id} header={<h3> <strong>{i.r.properties.service}</strong> </h3>}>
+                                                    <div className='appointmentContainerStuff'>
+                                                        <h4> <strong>Name: </strong> {i.m.name}</h4>
+                                                        <h4> <strong>ID: </strong> {i.m.userId}</h4>
+                                                        <h4> <strong>Email: </strong> {i.m.email}</h4>
+                                                        <h4> <strong>Note: </strong> {i.r.properties.patientDesc}</h4>
+                                                    </div>
+                                            </ListGroupItem>
+                                        })
+                                    )
+                                }
+                            </div>
                         </Tab>
                     </Tabs>
                 </div>

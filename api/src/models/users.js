@@ -239,4 +239,17 @@ export default class clients {
         });
     }
 
+    getAppointments(email, callback){
+        //Lon.*'
+        let cypherQuery = "MATCH (n { email: {email} })-[r]-(m:Patient) RETURN n,r,m ";
+        db.query(cypherQuery, {email: email}, function(err, results) {
+            if (err) {
+                return callback(err);
+            } else {
+                let result = results;
+                return callback(result);
+            }
+        });
+    }
+
 }
