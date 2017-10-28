@@ -1,11 +1,20 @@
 import React from 'react';
+import { PageHeader} from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+import Navbar from '../ReactComponents/Navbar.jsx';
 
-export default class NotFound extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1> Page Not Found </h1>
-      </div>
-      );
-  }
+import { observer } from 'mobx-react';
+
+@observer export default class NotFound extends React.Component {
+
+    render() {
+        return (
+            <div>
+              <Navbar type="navbar loginNavbar"/>
+              <div className="divContainer">
+                <PageHeader className="pageHeader"> Page not found :(</PageHeader>
+              </div>
+            </div>
+        );
+    }
 }

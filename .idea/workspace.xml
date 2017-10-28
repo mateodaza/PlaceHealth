@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ebbb5d4-6a90-4402-9c80-05731aec2c03" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/carousel-1.png" afterPath="$PROJECT_DIR$/res/carousel-1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/carousel-2.png" afterPath="$PROJECT_DIR$/res/carousel-2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/front/components/Pages/General/Dashboard.jsx" afterPath="$PROJECT_DIR$/app/front/components/Pages/General/Dashboard.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/front/components/Pages/General/Documentation.jsx" afterPath="$PROJECT_DIR$/app/front/components/Pages/General/Documentation.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/front/components/Pages/General/Home.jsx" afterPath="$PROJECT_DIR$/app/front/components/Pages/General/Home.jsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/front/components/Pages/General/Login.jsx" afterPath="$PROJECT_DIR$/app/front/components/Pages/General/Login.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/AutoSuggest.jsx" afterPath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/AutoSuggest.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/Navbar.jsx" afterPath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/Navbar.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/SearchResult.jsx" afterPath="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/SearchResult.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/front/index.jsx" afterPath="$PROJECT_DIR$/app/front/index.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main.css" afterPath="$PROJECT_DIR$/app/src/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/front/components/Pages/General/NotFound.jsx" afterPath="$PROJECT_DIR$/app/front/components/Pages/General/NotFound.jsx" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,11 +17,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main.css">
+      <file leaf-file-name="Navbar.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/front/components/Pages/ReactComponents/Navbar.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="236" column="1" lean-forward="true" selection-start-line="236" selection-start-column="1" selection-end-line="236" selection-end-column="1" />
+            <state relative-caret-position="123">
+              <caret line="128" column="40" lean-forward="true" selection-start-line="125" selection-start-column="32" selection-end-line="128" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Login.jsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/front/components/Pages/General/Login.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="292">
+              <caret line="52" column="21" lean-forward="true" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -131,8 +131,9 @@
         <option value="$PROJECT_DIR$/app/front/components/Pages/ReactComponents/SearchResult.jsx" />
         <option value="$PROJECT_DIR$/app/front/components/Pages/General/Dashboard.jsx" />
         <option value="$PROJECT_DIR$/app/src/main.css" />
-        <option value="$PROJECT_DIR$/app/front/components/Pages/General/Login.jsx" />
         <option value="$PROJECT_DIR$/app/front/index.jsx" />
+        <option value="$PROJECT_DIR$/app/front/components/Pages/General/NotFound.jsx" />
+        <option value="$PROJECT_DIR$/app/front/components/Pages/General/Login.jsx" />
       </list>
     </option>
   </component>
@@ -169,7 +170,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -260,6 +260,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -339,11 +340,12 @@
       <workItem from="1509158725037" duration="240000" />
       <workItem from="1509159112391" duration="674000" />
       <workItem from="1509199981100" duration="9211000" />
+      <workItem from="1509218466379" duration="755000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="247946000" />
+    <option name="totallyTimeSpent" value="248701000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="23" width="1213" height="777" extended-state="0" />
@@ -489,13 +491,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/front/components/Pages/General/NotFound.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/src/models/QUERIES.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="376">
@@ -625,26 +620,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/front/components/Pages/ReactComponents/Navbar.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-880">
-          <caret line="56" column="38" lean-forward="true" selection-start-line="56" selection-start-column="38" selection-end-line="56" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/front/components/Pages/General/Home.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="29" column="57" lean-forward="false" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/front/components/Pages/ReactComponents/SearchResult.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="51" column="64" lean-forward="false" selection-start-line="51" selection-start-column="64" selection-end-line="51" selection-end-column="64" />
           <folding />
         </state>
       </provider>
@@ -673,14 +652,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/front/components/Pages/General/Login.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/front/index.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
@@ -691,8 +662,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="236" column="1" lean-forward="true" selection-start-line="236" selection-start-column="1" selection-end-line="236" selection-end-column="1" />
+        <state relative-caret-position="3530">
+          <caret line="236" column="1" lean-forward="false" selection-start-line="236" selection-start-column="1" selection-end-line="236" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/front/components/Pages/ReactComponents/SearchResult.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="49" column="27" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/front/components/Pages/ReactComponents/Navbar.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="128" column="40" lean-forward="true" selection-start-line="125" selection-start-column="32" selection-end-line="128" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/front/components/Pages/General/NotFound.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="69" lean-forward="false" selection-start-line="14" selection-start-column="69" selection-end-line="14" selection-end-column="69" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/front/components/Pages/General/Login.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="52" column="21" lean-forward="true" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
           <folding />
         </state>
       </provider>
