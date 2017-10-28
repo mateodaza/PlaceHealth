@@ -28,8 +28,8 @@ import dbuser from '../../../../../api/src/models/users.js';
 
     setAppointment(){
         let user = new dbuser();
-        if(this.state.userName !== '', this.state.userId !== '',
-            this.state.userEmail !== '',this.state.userDescription !== ''){
+        if(this.state.userName !== '' && this.state.userId !== '' &&
+            this.state.userEmail !== '' && this.state.userDescription !== ''){
               user.setAppointment(this.props.item.m.email, this.props.item.n.name, this.state.userName,
                                         this.state.userId, this.state.userEmail, this.state.userDescription, function(result){
                         this.props.onHide();

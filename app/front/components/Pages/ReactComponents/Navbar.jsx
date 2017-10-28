@@ -62,11 +62,11 @@ import dbuser from '../../../../../api/src/models/users.js';
                         <a href="#" style={{color:'whitesmoke', opacity:0.8}}>Services</a>
                     </Navbar.Brand>
                     <Navbar.Brand>
-                        <a href="#" style={{color:'whitesmoke' , opacity:0.8}}>About</a>
+                        <a href="#/doc" style={{color:'whitesmoke' , opacity:0.8}}>Documentation</a>
                     </Navbar.Brand>
                     <Navbar.Brand >
                         {
-                            localStore.isLogged && (   //Change this token plz.
+                            localStore.isLogged && (   //Change this token plz. or not
                                 <a href="#/auth" style={{color:'whitesmoke' , opacity:0.8}}>Dashboard</a>
                             )
                         }
