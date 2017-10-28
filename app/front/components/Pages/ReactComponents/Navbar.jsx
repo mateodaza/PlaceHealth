@@ -55,7 +55,9 @@ import dbuser from '../../../../../api/src/models/users.js';
                 <Navbar>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <a href="#" style={{color:'whitesmoke'}}> <strong>PlaceHealth</strong></a>
+                            <a href="#" style={{color:'whitesmoke'}}>
+                                <strong>PlaceHealth</strong>
+                            </a>
                         </Navbar.Brand>
                     </Navbar.Header>
                     <Navbar.Brand >
@@ -122,17 +124,20 @@ import dbuser from '../../../../../api/src/models/users.js';
                         <div onKeyPress={event => {
                             if (event.key === "Enter") {
                                 window.location=('/#/search/'+localStore.navSearchItem.replace(/\s/g, ''));
-                                window.location.reload();
+                                setTimeout(function(){
+                                    window.location.reload();
+                                }, 450);
                             }
                         }}>
                             <FormGroup>
                                 <Suggest/>
                             </FormGroup>
                             <FormGroup style={{marginLeft: '1em'}}>
-                                <a href="#" onClick={ ()=>{window.location = ('/#/search/'+localStore.navSearchItem.replace(/\s/g, ''));
-                                                        window.location.reload();}}>
-                                     <MdSearch size={22} color='whitesmoke'/>
-                                </a>
+                                <LinkContainer to={'/search/'+localStore.navSearchItem.replace(/\s/g, '')}>
+                                    <a onClick={()=>{window.location.reload()}}>
+                                         <MdSearch size={22} color='whitesmoke'/>
+                                    </a>
+                                </LinkContainer>
                             </FormGroup>
                         </div>
                     </Navbar.Form>

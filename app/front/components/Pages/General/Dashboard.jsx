@@ -209,14 +209,14 @@ import dbuser from '../../../../../api/src/models/users.js';
 
     render() {
         return (
-            <div>
+            <div >
                 <Navbar type="navbar loginNavbar"/>
                 <div className="divContainer">
                     <PageHeader className="pageHeader"> Welcome </PageHeader>
 
-                    <Tabs defaultActiveKey={1} id="noanim-tab-example">
-                        <Tab eventKey={1} title={<h4> Profile </h4>}>
-                            <div className="divContainer">
+                    <Tabs className='tab'  defaultActiveKey={1} id="noanim-tab-example">
+                        <Tab eventKey={1} title={<h4 style={{color: 'rgba(10,42,79,1)'}}> Profile </h4>}>
+                            <div className="divContainer smokeDiv">
                                 {
                                     this.state.checkInfo === true &&(
                                         <Alert bsStyle="danger">
@@ -504,8 +504,8 @@ import dbuser from '../../../../../api/src/models/users.js';
                         </Tab>
 
 
-                        <Tab eventKey={2} title={<h4> Appointments </h4>}>
-                            <div className="appointmentContainer">
+                        <Tab style={{backgroundColor: 'whitesmoke'}} eventKey={2} title={<h4 style={{color: 'rgba(10,42,79,1)'}}> Appointments </h4>}>
+                            <div className="appointmentContainer smokeDiv">
                                 {
                                     Object.keys(this.state.appointments).length !== 0 &&(
                                         this.state.appointments.map((i, index)=>{

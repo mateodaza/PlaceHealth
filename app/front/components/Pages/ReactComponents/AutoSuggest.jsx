@@ -79,6 +79,8 @@ function getSectionSuggestions(section) {
         this.setState({
             suggestions: getSuggestions(value)
         });
+        localStore.navSearchItem = value;
+
     };
 
     onSuggestionsClearRequested = () => {

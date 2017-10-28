@@ -2,7 +2,9 @@ body {
     height: 100%;
     position: relative;
     font-family: 'Lato', sans-serif;
+    background-color: whitesmoke;
 }
+
 .overlay {
     position: absolute;
     margin-left: 45vw;
@@ -14,6 +16,7 @@ body {
     padding-bottom:6em;
     margin: 1em;
 }
+
 .navbar{
     margin: 0;
     padding: 0;
@@ -28,7 +31,7 @@ body {
     background: rgba(10,42,79,0.8);  /* Main blue */
 }
 .homeNavbar{
-    position: fixed;
+    position: inherit;
     width: 100%;
     background-color: transparent;
     border-color:transparent;
@@ -179,6 +182,7 @@ body {
 }
 .searchContainer{
     display: flex;
+    margin-left: 2em;
     flex-direction: row;
     flex-wrap: wrap;
     width: auto;
@@ -216,17 +220,28 @@ body {
     cursor: pointer;
 }
 #video_overlays {
-    position:absolute;
+    position: absolute;
     float:left;
     width: 100%;
     height: inherit;
-    background-color:rgba(10,42,79,0.2);
+    background-color:rgba(10,42,79,0.3);    /*Greenish Blue*/
+}
+#background-video{
+    position: absolute;
 }
 .vidContainer{
     display: flex;
-    background-color:rgba(10,42,79,0.2);
+    background-color:rgba(10,42,79,0.3);
     align-items: center;
     height: 50em;
+}
+.tab ul > li.active > a,
+.tab ul > li.active > a:hover,
+.tab ul > li.active > a:focus {
+    background-color: rgba(10,42,79,0.1);
+}
+.smokeDiv *{
+    background-color: whitesmoke;
 }
 
 

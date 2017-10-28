@@ -35,6 +35,7 @@ import Intro from './DocComponents/Intro.jsx';
                     <PageHeader> Documentation </PageHeader>
                     <Sticky enabled={true}>
                         <div className='docSidebar'>
+                            <h3 style={{marginBottom: '18px', marginTop: '0'}}> Index </h3>
                             {
                                 docContent.map( (content, index) =>{
                                     if(Number(this.state.selected) === content.id){

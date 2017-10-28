@@ -28,6 +28,7 @@ const tooltip = (
         let user = new dbuser();
         user.getInfoSearh(localStore.navSearchItem, function(result) {
             this.setState({searchResult: result});
+            localStore.navSearchItem = '';
         }.bind(this));
     }
 
@@ -48,9 +49,9 @@ const tooltip = (
                 <div className="divContainer">
                     <PageHeader className="pageHeader"> Results for {this.state.searchItem} </PageHeader>
                     <ListGroup>
-                        <div className="searchContainer">
+                        <div className="searchContainer smokeDiv">
                         {
-                            Object.keys(this.state.searchResult).length !== 0 &&(
+                            Object.keys(this.state.searchResult).length !== 0 ?(
                                   this.state.searchResult.map((i, index)=>{
                                     return <ListGroupItem key={i.r.id}>
                                         <div className='searchContainerStuff'>
@@ -72,13 +73,17 @@ const tooltip = (
                                                   )
                                               }
                                         </div>
-                                              <div><br/>
+                                              <div>
                                                   <OverlayTrigger placement="right" overlay={tooltip}>
                                                      <Button bsSize="large" value={index} onClick={this.open.bind(this)}> Contact </Button>
                                                   </OverlayTrigger>
                                               </div>
                                           </ListGroupItem>
                                 })
+                            ):(
+                                <div className='searchContainer'>
+                                    <h3> Nothing was found :( </h3>
+                                </div>
                             )
                         }
                         </div>

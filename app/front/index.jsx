@@ -34,9 +34,21 @@ import Doc from './components/Pages/General/Documentation.jsx';
         <div >
           <Switch>
             <Route exact path="/" component={Home}/>
-            <Route path='/login' component={Login}/>
+            <Route path="/login" render={() => (
+                this.loggedIn() ? (
+                    <Home/>
+                ) : (
+                    <Login />
+                )
+            )}/>
             <Route path='/search/*' component={Search}/>
-            <Route path='/signup' component={SignUp}/>
+            <Route path="/signup" render={() => (
+                this.loggedIn() ? (
+                    <Home/>
+                ) : (
+                    <SignUp />
+                )
+            )}/>
             <Route path='/doc' component={Doc}/>
               <Route path="/auth" render={() => (
                 this.loggedIn() ? (

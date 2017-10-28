@@ -16,19 +16,21 @@ import SectionTwo from '../ReactComponents/MainHomeSectionTwo.jsx';
     return (
       <div>
           <div className='vidContainer'>
-              <h1 className="overlay">Live Well.</h1>
-              <div id="video_overlays">
-                  <Sticky enabled={true} bottomBoundary={652}>
-                      <Navbar type="homeNavbar"/>
-                  </Sticky>
-              </div>
               <video  id="background-video" preload='auto' autoPlay loop  style={{ opacity:1, width: '100%'}}>
                   <source src="./Falling-Leaf/Falling-Leaf.webm" type="video/webm" />
                   <source src="./Falling-Leaf/Falling-Leaf.mp4" type="video/mp4" />
                   <img alt="no video support" src="./Falling-Leaf/Falling-Leaf.jpg"/>
               </video>
-          </div>
+              <div id="video_overlays">
+                  <Sticky enabled={true} bottomBoundary={652}>
+                      <Navbar type="navbar homeNavbar"/>
+                  </Sticky>
+              </div>
+              <div>
+                  <h1 className="overlay">Live Well.</h1>
+              </div>
 
+          </div>
           <h1 className="sectionHeader"> Medical Health Services </h1>
           <SectionOne />
           <Parallax bgImage="./carousel-2.png" strength={400}>
