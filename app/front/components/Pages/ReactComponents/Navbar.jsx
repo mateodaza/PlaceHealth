@@ -60,11 +60,8 @@ import dbuser from '../../../../../api/src/models/users.js';
                             </a>
                         </Navbar.Brand>
                     </Navbar.Header>
-                    <Navbar.Brand >
-                        <a href="#" style={{color:'whitesmoke', opacity:0.8}}>Services</a>
-                    </Navbar.Brand>
                     <Navbar.Brand>
-                        <a href="#/doc" style={{color:'whitesmoke' , opacity:0.8}}>Documentation</a>
+                        <a href="#/doc" style={{color:'whitesmoke' , opacity:0.8}}>Documentación</a>
                     </Navbar.Brand>
                     <Navbar.Brand >
                         {

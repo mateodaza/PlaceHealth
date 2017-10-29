@@ -52,7 +52,10 @@ import user from '../../../../../api/src/models/users.js';
                         doctor.createUser(id, name, email, hash, "Doctor", function (data){
                             if(typeof data !== 'undefined'){
                                 alert('Success!');
-                                window.location.replace("/#/auth");
+                                localStore.userEmail = email;
+                                localStore.sessionToken = auth.generateToken(data);
+                                localStore.isLogged = true;
+                                window.location = ("/#/auth");
                             } else{
                                 alert('Sorry, I cannot do that.');
                             }
@@ -63,7 +66,10 @@ import user from '../../../../../api/src/models/users.js';
                         center.createUser(id, name, email, hash, "Center", function (data){
                             if(typeof data !== 'undefined'){
                                 alert('Success!');
-                                window.location.replace("/#/auth");
+                                localStore.userEmail = email;
+                                localStore.sessionToken = auth.generateToken(data);
+                                localStore.isLogged = true;
+                                window.location = ("/#/auth");
                             } else{
                                 alert('Sorry, I cannot do that.');
                             }
@@ -114,7 +120,7 @@ import user from '../../../../../api/src/models/users.js';
 
                         <FormGroup controlId="formHorizontalPassword">
                             <Col componentClass={ControlLabel} sm={2}>
-                                Name
+                                Nombre
                             </Col>
                             <Col sm={10} md={4}>
                                 <FormControl type="text" name="name" placeholder="Name" value={this.state.name} onChange={this.handleChange.bind(this)}/>
@@ -123,7 +129,7 @@ import user from '../../../../../api/src/models/users.js';
 
                         <FormGroup >
                             <Col componentClass={ControlLabel} sm={2}>
-                                Profile Type
+                                Tipo Perfil
                             </Col>
                             <Col sm={2} md={1}>
                                 <Radio name="radioGroup" value={1} onClick={this.getType.bind(this)}>
@@ -132,22 +138,10 @@ import user from '../../../../../api/src/models/users.js';
                             </Col>
                             <Col sm={2} md={2}>
                                 <Radio name="radioGroup" value={2} onClick={this.getType.bind(this)}>
-                                    Medical Center
+                                    Centro Médico
                                 </Radio>
                             </Col>
                         </FormGroup>
-                        {
-                            Number(this.state.type) === 1 &&(
-                                <div>
-                                    <Col componentClass={ControlLabel} sm={2}>
-                                        Specialty
-                                    </Col>
-                                    <Col sm={10} md={4}>
-                                        <h5>Something here</h5>
-                                    </Col>
-                                </div>
-                            )
-                        }
                         <FormGroup>
                             <Col smOffset={2} sm={10}>
                                  <ButtonToolbar >

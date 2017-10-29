@@ -27,12 +27,16 @@ import Intro from './DocComponents/Intro.jsx';
         })
     }
 
+    componentDidMount(){
+        window.scrollTo(0, 0);
+    }
+
     render() {
         return (
             <div>
                 <Navbar type="loginNavbar"/>
                 <div className='divContainer'>
-                    <PageHeader> Documentation </PageHeader>
+                    <PageHeader> Documentación </PageHeader>
                     <Sticky enabled={true}>
                         <div className='docSidebar'>
                             <h3 style={{marginBottom: '18px', marginTop: '0'}}> Index </h3>

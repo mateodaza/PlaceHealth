@@ -27,22 +27,27 @@ import SectionTwo from '../ReactComponents/MainHomeSectionTwo.jsx';
                   </Sticky>
               </div>
               <div>
-                  <h1 className="overlay">Live Well.</h1>
+                  <h1 className="overlay">Vive mejor</h1>
               </div>
-
           </div>
-          <h1 className="sectionHeader"> Medical Health Services </h1>
-          <SectionOne />
+
+          <div style={{minHeight: '80vh'}}>
+              <h1 className="sectionHeader"> PlaceHealth - Todo en un mismo lugar </h1>
+              <SectionOne />
+          </div>
+
           <Parallax bgImage="./carousel-2.png" strength={400}>
-              <div style={{height: '80vh'}}>
-              </div>
+              <div style={{minHeight: '80vh'}}></div>
           </Parallax>
+
           <SectionTwo />
+
           <Parallax bgImage="./carousel-1.png" strength={400}>
-              <div style={{height: '80vh'}}>
+              <div style={{minHeight: '80vh'}}>
                   <h3 className="sectionContent">  </h3>
               </div>
           </Parallax>
+
       </div>
     )
   }

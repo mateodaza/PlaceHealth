@@ -44,9 +44,6 @@ import dbuser from '../../../../../api/src/models/users.js';
                         localStore.sessionToken = auth.generateToken(userData);
                         localStore.isLogged = true;
                         window.location=('/#/auth');
-                        setTimeout(function(){
-                            window.location.reload();
-                        }, 450);
                     }else{
                         this.setState({email: '', pass: ''});
                         alert('Have you joined us?');

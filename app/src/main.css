@@ -81,9 +81,32 @@ body {
 
     /* For center content */
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+
+}
+.lastFooterFoot{
+    flex-direction: column;
+}
+.footerDiv{
+    margin-left: 5%;
+    min-height: 12em;
+    height: auto;
+    min-width: 10em;
+    width: auto;
+    color: whitesmoke;
+    align-items: center;
+
+}
+.subFooter{
+    color: whitesmoke;
+}
+.footerDiv a{
+    color: darkgrey;
+}
+.footerDiv a:hover{
+    color: lightgrey;
 }
 
 /*SECTION ONE*/
@@ -197,7 +220,13 @@ body {
     min-height: 20em;
     color: dimgrey;
 }
-
+.infoBtn{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: grey;
+    margin: 8px;
+}
 .searchContainerStuff{
     width: auto;
     height: auto;
@@ -224,7 +253,7 @@ body {
     float:left;
     width: 100%;
     height: inherit;
-    background-color:rgba(10,42,79,0.3);    /*Greenish Blue*/
+    background-color:rgba(10,42,79,0.3);
 }
 #background-video{
     position: absolute;
@@ -232,8 +261,10 @@ body {
 .vidContainer{
     display: flex;
     background-color:rgba(10,42,79,0.3);
+    margin: 0;
+    padding: 0;
     align-items: center;
-    height: 50em;
+    height: 100vh;
 }
 .tab ul > li.active > a,
 .tab ul > li.active > a:hover,

@@ -1,6 +1,6 @@
 const docContent = [{
     id: 0,
-    title: 'Introduccion',
+    title: 'Introducción',
 }, {
     id: 1,
     title: 'Not The Intro'

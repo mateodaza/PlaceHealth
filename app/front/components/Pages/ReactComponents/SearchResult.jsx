@@ -10,7 +10,7 @@ import Navbar from './Navbar.jsx';
 import dbuser from '../../../../../api/src/models/users.js';
 
 const tooltip = (
-    <Tooltip id="tooltip"><strong>Hey!</strong> let them know that you are interested in their service.</Tooltip>
+    <Tooltip id="tooltip">Permiteles saber que necesitas! </Tooltip>
 );
 
 @observer export default class SearchResult extends React.Component {
@@ -28,7 +28,9 @@ const tooltip = (
         let user = new dbuser();
         user.getInfoSearh(localStore.navSearchItem, function(result) {
             this.setState({searchResult: result});
-            localStore.navSearchItem = '';
+            setTimeout(function(){
+                localStore.navSearchItem = '';
+            }, 80);
         }.bind(this));
     }
 
@@ -47,42 +49,45 @@ const tooltip = (
             <div>
                 <Navbar type="navbar loginNavbar"/>
                 <div className="divContainer">
-                    <PageHeader className="pageHeader"> Results for {this.state.searchItem} </PageHeader>
+                    <PageHeader className="pageHeader"> Resultados para &apos;{this.state.searchItem}&apos; </PageHeader>
                     <ListGroup>
                         <div className="searchContainer smokeDiv">
                         {
                             Object.keys(this.state.searchResult).length !== 0 ?(
                                   this.state.searchResult.map((i, index)=>{
-                                    return <ListGroupItem key={i.r.id}>
-                                        <div className='searchContainerStuff'>
-                                              {
-                                                  i.m.address !== undefined ?(
-                                                      <div>
-                                                          <h4 style={{marginBottom:'0'}}><strong> {i.m.name} </strong></h4>
-                                                          <h4>{i.r.type}  {i.n.name}</h4>
-                                                          <p> <strong>Address: </strong>{i.m.address}</p>
-                                                            <p> <strong>Phone Number: </strong>{i.m.phone}</p>
-                                                      </div>
-                                                  ):(
-                                                      <div>
-                                                          <h4 style={{marginBottom:'0'}}><strong> Dr. {i.m.name} </strong></h4>
-                                                          <h4>{i.r.type}  {i.n.name}</h4>
-                                                          <p> <strong>Address: </strong>{i.r.properties.address}</p>
-                                                          <p> <strong>Phone Number: </strong>{i.r.properties.phone}</p>
-                                                      </div>
-                                                  )
-                                              }
-                                        </div>
-                                              <div>
-                                                  <OverlayTrigger placement="right" overlay={tooltip}>
-                                                     <Button bsSize="large" value={index} onClick={this.open.bind(this)}> Contact </Button>
-                                                  </OverlayTrigger>
-                                              </div>
-                                          </ListGroupItem>
+                                     if (i.m.state === 'true'){
+                                         return <ListGroupItem key={i.r.id}>
+                                             <div className='searchContainerStuff'>
+                                                 {
+                                                     i.m.address !== undefined ?(
+                                                         <div>
+                                                             <h4 style={{marginBottom:'0'}}><strong> {i.m.name} </strong></h4>
+                                                             <h4> {i.n.name}</h4>
+                                                             <p> <strong>Dirección: </strong>{i.m.address}</p>
+                                                             <p> <strong>Teléfono: </strong>{i.m.phone}</p>
+                                                         </div>
+                                                     ):(
+                                                         <div>
+                                                             <h4 style={{marginBottom:'0'}}><strong> Dr. {i.m.name} </strong></h4>
+                                                             <h4> {i.n.name}</h4>
+                                                             <p> <strong>Descripción: </strong>{i.r.properties.description}</p>
+                                                             <p> <strong>Dirección: </strong>{i.r.properties.address}</p>
+                                                             <p> <strong>Teléfono: </strong>{i.r.properties.phone}</p>
+                                                         </div>
+                                                     )
+                                                 }
+                                             </div>
+                                             <div>
+                                                 <OverlayTrigger placement="right" overlay={tooltip}>
+                                                     <Button bsSize="large" value={index} onClick={this.open.bind(this)}> Contacto </Button>
+                                                 </OverlayTrigger>
+                                             </div>
+                                         </ListGroupItem>
+                                     }
                                 })
                             ):(
                                 <div className='searchContainer'>
-                                    <h3> Nothing was found :( </h3>
+                                    <h3> No se encontró nada :( </h3>
                                 </div>
                             )
                         }

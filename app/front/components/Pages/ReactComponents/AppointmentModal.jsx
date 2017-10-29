@@ -33,6 +33,7 @@ import dbuser from '../../../../../api/src/models/users.js';
               user.setAppointment(this.props.item.m.email, this.props.item.n.name, this.state.userName,
                                         this.state.userId, this.state.userEmail, this.state.userDescription, function(result){
                         this.props.onHide();
+                        alert('Espera a que se comuniquen contigo!');
               }.bind(this));
         }else{
             alert("Please complete all the fields");

@@ -33,8 +33,8 @@ import Doc from './components/Pages/General/Documentation.jsx';
       <HashRouter>
         <div >
           <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route path="/login" render={() => (
+            <Route exact path='/' component={Home}/>
+            <Route path='/login' render={() => (
                 this.loggedIn() ? (
                     <Home/>
                 ) : (
@@ -42,7 +42,7 @@ import Doc from './components/Pages/General/Documentation.jsx';
                 )
             )}/>
             <Route path='/search/*' component={Search}/>
-            <Route path="/signup" render={() => (
+            <Route path='/signup' render={() => (
                 this.loggedIn() ? (
                     <Home/>
                 ) : (
@@ -50,11 +50,11 @@ import Doc from './components/Pages/General/Documentation.jsx';
                 )
             )}/>
             <Route path='/doc' component={Doc}/>
-              <Route path="/auth" render={() => (
+              <Route path='/auth' render={() => (
                 this.loggedIn() ? (
                     <Auth/>
                 ) : (
-                    <Redirect to="/" />
+                    <Redirect to='/' />
                 )
             )}/>
             <Route path='*' component={NotFound}/>

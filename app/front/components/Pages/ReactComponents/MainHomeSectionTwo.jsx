@@ -11,9 +11,11 @@ import localStore from '../../../../src/localStore.js'
             <div className="sectionOne">
                 <section >
                     <div className="subSection">
-                        <h2> You can feel comfortable knowing that you&rsquo;re getting the best care available,
-                            with a commitment to service, and all the luxuries of a state-of-the-art centre.
-                            Expect a truly great experience. </h2>
+                        <h2>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lectus felis,
+                            gravida ac leo et, iaculis commodo felis. Fusce fermentum scelerisque ante,
+                            in ultrices velit posuere a. Ut dolor massa, tempus at ante et, semper placerat nunc.
+                        </h2>
                     </div>
                 </section>
                 <section style={{backgroundColor: 'rgba(10,42,79,0.7)', color: 'whitesmoke', paddingTop:'0', paddingBottom:'2em', paddingLeft:'2em', paddingRight:'2em'}}>

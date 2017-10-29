@@ -9,10 +9,10 @@ export default class clients {
     createUser(id, nombre, email, password, type, callback){
         let cypherQuery = '';
         if(type === "Doctor"){
-            cypherQuery = "CREATE (n: Doctor {doctorid: {id}, name:{name}, email:{email}, pass:{pass} }) RETURN n";
+            cypherQuery = "CREATE (n: Doctor {doctorid: {id}, name:{name}, email:{email}, pass:{pass}, state:'false' }) RETURN n";
         }else{
             if(type === "Center"){
-                cypherQuery = "CREATE (n: Center {doctorid: {id}, name:{name}, email:{email}, pass:{pass} }) RETURN n";
+                cypherQuery = "CREATE (n: Center {doctorid: {id}, name:{name}, email:{email}, pass:{pass}, state:'false' }) RETURN n";
             }
         }
         db.query(cypherQuery, {id: id, name: nombre, email: email, pass: password}, function(err, results) {
@@ -247,6 +247,21 @@ export default class clients {
                 return callback(err);
             } else {
                 let result = results;
+                return callback(result);
+            }
+        });
+    }
+
+    changeStateUser(email, value,  callback){
+        let cypherQuery = "MATCH (n {email: {email} }) " +
+            "SET n.state={value} RETURN n"
+        db.query(cypherQuery, {email: email, value: value}, function(err, results) {
+            if (err) {
+                console.error('Error creating new relation', err);
+                return callback(err);
+            } else {
+                let result = results[0];
+                console.log('Relation saved to database with id:', result);
                 return callback(result);
             }
         });

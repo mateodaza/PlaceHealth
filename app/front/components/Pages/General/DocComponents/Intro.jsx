@@ -7,8 +7,10 @@ import { observer } from 'mobx-react';
     render() {
         return (
             <div >
-                <h3>Introduccion</h3>
-                <p> Set some info </p>
+                <h3>Introducción</h3>
+                <div className='divContainer'>
+                    <p> Info acá  </p>
+                </div>
             </div>
         )
     }
