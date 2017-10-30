@@ -264,7 +264,7 @@ body {
     margin: 0;
     padding: 0;
     align-items: center;
-    height: 100vh;
+    height: 98vh;
 }
 .tab ul > li.active > a,
 .tab ul > li.active > a:hover,

@@ -17,7 +17,7 @@ function getSuggestions(value) {
 
     const regex = new RegExp('^' + escapedValue, 'i');
 
-    let stuff = [{title: 'Service', info:[]}, {title: 'Specialty', info:[]}];
+    let stuff = [{title: 'Servicio', info:[]}, {title: 'Especialidad', info:[]}];
     localStore.searchSuggestions.Service.map((i)=>{
         stuff[0].info.push({name: i});
     });

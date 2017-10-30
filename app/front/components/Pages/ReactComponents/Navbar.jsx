@@ -12,14 +12,14 @@ import localStore from '../../../../src/localStore.js';
 import dbuser from '../../../../../api/src/models/users.js';
 
 @observer export default class MainHomeNavbar extends React.Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             searchItem: '',
         };
     }
 
-    componentDidMount(){
+    componentWillMount(){
         //Get Info for looking up stuff
         let user = new dbuser();
         let stuff = {Service: [], Specialty: [] };
@@ -33,13 +33,18 @@ import dbuser from '../../../../../api/src/models/users.js';
                     stuff.Specialty.push(i.name);
                 })
                 localStore.searchSuggestions = stuff;
+
             });
         })
 
     }
 
-
-
+    search(){
+        window.location=('/#/search/'+localStore.navSearchItem.replace(/\s/g, ''));
+                                setTimeout(function(){
+                                    window.location.reload();
+                                }, 400);
+                            }
 
     handleSearchItemChange(e) {
         this.setState({searchItem: e.target.value});
@@ -120,10 +125,7 @@ import dbuser from '../../../../../api/src/models/users.js';
                         }
                         <div onKeyPress={event => {
                             if (event.key === "Enter") {
-                                window.location=('/#/search/'+localStore.navSearchItem.replace(/\s/g, ''));
-                                setTimeout(function(){
-                                    window.location.reload();
-                                }, 450);
+                                this.search();
                             }
                         }}>
                             <FormGroup>
@@ -131,7 +133,7 @@ import dbuser from '../../../../../api/src/models/users.js';
                             </FormGroup>
                             <FormGroup style={{marginLeft: '1em'}}>
                                 <LinkContainer to={'/search/'+localStore.navSearchItem.replace(/\s/g, '')}>
-                                    <a onClick={()=>{window.location.reload()}}>
+                                    <a onClick={this.search}>
                                          <MdSearch size={22} color='whitesmoke'/>
                                     </a>
                                 </LinkContainer>
