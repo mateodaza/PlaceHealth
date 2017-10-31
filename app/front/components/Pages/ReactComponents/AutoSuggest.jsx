@@ -57,8 +57,8 @@ function getSectionSuggestions(section) {
 
 
 @observer export default class AutoSuggest extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             value: '',

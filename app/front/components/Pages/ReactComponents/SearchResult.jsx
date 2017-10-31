@@ -28,9 +28,7 @@ const tooltip = (
         let user = new dbuser();
         user.getInfoSearh(localStore.navSearchItem, function(result) {
             this.setState({searchResult: result});
-            setTimeout(function(){
-                localStore.navSearchItem = '';
-            }, 80);
+            localStore.navSearchItem = '';
         }.bind(this));
     }
 
