@@ -5,6 +5,7 @@ import { observer } from 'mobx-react';
 import localStore from '../../../../src/localStore.js'
 
 @observer export default class MainHomeFooter extends React.Component {
+
     render() {
         return (
             <footer>
@@ -12,7 +13,8 @@ import localStore from '../../../../src/localStore.js'
                     <div className='footerDiv'>
                         <h4> <strong>PlaceHealth</strong> </h4>
                         <a href='#'><h5> Home</h5> </a>
-                        <a href='#/doc'> <h5>Documentación </h5></a><br/>
+                        <a href='#/doc'> <h5>Documentación </h5></a>
+                        <a href='#/services'> <h5>Servicios </h5></a><br/>
                     </div>
                     <div className='footerDiv'>
                         <h4> <strong>About</strong> </h4>

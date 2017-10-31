@@ -139,6 +139,9 @@ body {
     color: rgba(10,42,79,0.8);
     padding-left: 5%;
 }
+.subPageHeader{
+    color: rgba(10,42,79,0.7);
+}
 .sectionHeader{
     color: darkgrey;
     padding-top: 2%;
@@ -274,6 +277,30 @@ body {
 .smokeDiv *{
     background-color: whitesmoke;
 }
+.servicesBox{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.servicesBox div{
+    width: auto;
+    min-width: 40vw;
+    height: auto;
+    padding: 5px;
+}
+.btnList{
+    background:none!important;
+    color:rgba(10,42,79,0.8);
+    border:none;
+    padding:0!important;
+    font: inherit;
+    cursor: pointer;
+}
+
+
+
+
 
 
 
@@ -291,6 +318,7 @@ body {
     width: 15em;
     height: 30px;
     padding: 10px 20px;
+    margin-top: 2px;
     /*font-family: Helvetica, sans-serif;*/
     font-weight: 300;
     font-size: 16px;

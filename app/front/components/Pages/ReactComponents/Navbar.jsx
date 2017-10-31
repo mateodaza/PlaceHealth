@@ -77,12 +77,17 @@ import dbuser from '../../../../../api/src/models/users.js';
                     </Navbar.Header>
                     <Navbar.Collapse>
                         <Nav>
-                            <NavItem eventKey={1} href="#/doc">
+                            <NavItem eventKey={1} href="#/services">
+                                <span style={{fontSize: '150%', color:'whitesmoke' , opacity:0.8}}>Servicios</span>
+                            </NavItem>
+                        </Nav>
+                        <Nav>
+                            <NavItem eventKey={2} href="#/doc">
                                 <span style={{fontSize: '150%', color:'whitesmoke' , opacity:0.8}}>Documentación</span>
                             </NavItem>
                         </Nav>
                         <Nav>
-                            <NavItem eventKey={2} href="#/auth">
+                            <NavItem eventKey={3} href="#/auth">
                             {
                                 localStore.isLogged && (   //Change this token plz. or not
                                     <span style={{fontSize: '150%', color:'whitesmoke' , opacity:0.8}}>Dashboard</span>
@@ -93,17 +98,17 @@ import dbuser from '../../../../../api/src/models/users.js';
                         <Nav pullRight>
                             {
                                 localStore.isLogged ? (
-                                    <NavItem eventKey={3} href="#" >
+                                    <NavItem eventKey={4} href="#" >
                                         <span style={{fontSize: '150%', color: 'whitesmoke', opacity:0.8}} onClick={this.logout.bind(this)}>
                                             Logout
                                         </span>
                                     </NavItem>
                                 ): (
-                                    <NavItem eventKey={3} href="#/login" className="navbarLog">
+                                    <NavItem eventKey={4} href="#/login" className="navbarLog">
                                         <span style={{fontSize: '150%', color: 'whitesmoke', opacity:0.8}}>
                                             Login
                                         </span>
-                                        /*<MdAccountBox size={34} color='whitesmoke'/>*/
+                                        { /* <MdAccountBox size={34} color='whitesmoke'/> */ }
                                     </NavItem>
                                 )
                             }

@@ -36,10 +36,10 @@ import Intro from './DocComponents/Intro.jsx';
             <div>
                 <Navbar type="loginNavbar"/>
                 <div className='divContainer'>
-                    <PageHeader> Documentación </PageHeader>
+                    <PageHeader className='pageHeader'> Documentación </PageHeader>
                     <Sticky enabled={true}>
                         <div className='docSidebar'>
-                            <h3 style={{marginBottom: '18px', marginTop: '0'}}> Index </h3>
+                            <h3 className='subPageHeader' style={{marginBottom: '18px', marginTop: '0'}}> Index </h3>
                             {
                                 docContent.map( (content, index) =>{
                                     if(Number(this.state.selected) === content.id){
@@ -65,7 +65,7 @@ import Intro from './DocComponents/Intro.jsx';
                         }
                         {
                             Number(this.state.selected) === 1 &&(
-                                <h3> Not the intro </h3>
+                                <h3 className='subPageHeader'> Not the intro </h3>
                             )
                         }
                     </div>

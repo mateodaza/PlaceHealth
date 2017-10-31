@@ -13,6 +13,7 @@ import Footer from './components/Pages/ReactComponents/Footer.jsx';
 import Auth from './components/Pages/General/Dashboard.jsx';
 import SignUp from './components/Pages/General/SignUp.jsx';
 import Doc from './components/Pages/General/Documentation.jsx';
+import Services from './components/Pages/General/Services.jsx';
 
 @observer export default class App extends React.Component {
   constructor(){
@@ -49,6 +50,7 @@ import Doc from './components/Pages/General/Documentation.jsx';
                     <SignUp />
                 )
             )}/>
+            <Route path='/services' component={Services}/>
             <Route path='/doc' component={Doc}/>
               <Route path='/auth' render={() => (
                 this.loggedIn() ? (
