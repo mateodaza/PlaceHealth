@@ -8,6 +8,9 @@ import localStore from '../../../../src/localStore.js'
 //Database
 import dbuser from '../../../../../api/src/models/users.js';
 
+//Voucher Generator
+import voucher_codes from 'voucher-code-generator';
+
 @observer export default class AppointmentModal extends React.Component {
     constructor(props){
         super(props);
@@ -27,16 +30,22 @@ import dbuser from '../../../../../api/src/models/users.js';
     }
 
     setAppointment(){
-        let user = new dbuser();
+        let user = new dbuser();        
         if(this.state.userName !== '' && this.state.userId !== '' &&
             this.state.userEmail !== '' && this.state.userDescription !== ''){
+
+            //Generate Unique Code
+            let voucherCode = voucher_codes.generate({
+                length: 10
+            });
               user.setAppointment(this.props.item.m.email, this.props.item.n.name, this.state.userName,
-                                        this.state.userId, this.state.userEmail, this.state.userDescription, function(result){
+                                        this.state.userId, this.state.userEmail, this.state.userDescription, voucherCode, function(result){
                         this.props.onHide();
-                        alert('Espera a que se comuniquen contigo!');
+                        //Send mail
+                        alert('Tu código promocional es ' + voucherCode + '. Espera a ser contactado!');
               }.bind(this));
         }else{
-            alert("Please complete all the fields");
+            alert("Por favor, completa todos los campos");
         }
 
     }
@@ -51,18 +60,18 @@ import dbuser from '../../../../../api/src/models/users.js';
                     <Form style={{marginTop: '1em'}} horizontal className="logForm">
                         <FormGroup controlId="formSpecialty">
                             <Col componentClass={ControlLabel} sm={4}>
-                                Your Name
+                                Nombre
                             </Col>
                             <Col sm={10} md={8}>
-                                <FormControl type="text" name="userName" placeholder="Name" value={this.state.userName} onChange={this.handleChange.bind(this)}/>
+                                <FormControl type="text" name="userName" placeholder="Nombre" value={this.state.userName} onChange={this.handleChange.bind(this)}/>
                             </Col>
                         </FormGroup>
                         <FormGroup controlId="formSpecialty">
                             <Col componentClass={ControlLabel} sm={4}>
-                                Your Identification
+                                Identificación
                             </Col>
                             <Col sm={10} md={8}>
-                                <FormControl type="text" name="userId" placeholder="Identification" value={this.state.userId} onChange={this.handleChange.bind(this)}/>
+                                <FormControl type="text" name="userId" placeholder="Identificación" value={this.state.userId} onChange={this.handleChange.bind(this)}/>
                             </Col>
                         </FormGroup>
                         <FormGroup controlId="formSpecialty">
@@ -75,10 +84,10 @@ import dbuser from '../../../../../api/src/models/users.js';
                         </FormGroup>
                         <FormGroup controlId="formSpecialty">
                             <Col componentClass={ControlLabel} sm={4}>
-                                Note or Descripion
+                                Nota o Descripción
                             </Col>
                             <Col sm={10} md={8}>
-                                <FormControl style={{minHeight: '20em'}} componentClass="textarea" type="text" name="userDescription" placeholder="Note or Descripion" value={this.state.userDescription} onChange={this.handleChange.bind(this)}/>
+                                <FormControl style={{minHeight: '20em'}} componentClass="textarea" type="text" name="userDescription" placeholder="Nota o Descripción" value={this.state.userDescription} onChange={this.handleChange.bind(this)}/>
                             </Col>
                         </FormGroup>
                     </Form>
@@ -87,7 +96,7 @@ import dbuser from '../../../../../api/src/models/users.js';
                     <Button type="submit"  onClick={this.props.onHide}>Cancel</Button>
                     <Button type="submit"  className="formBtn1"
                             name="setAppointment" onClick={this.setAppointment.bind(this)}>
-                        Contact
+                        Contacto
                     </Button>
                 </Modal.Footer>
             </Modal>

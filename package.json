@@ -20,6 +20,7 @@
   "author": "Mateo Daza, Carlos Quintero",
   "license": "ISC",
   "dependencies": {
+    "@koa/cors": "^2.2.1",
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.0.0",
@@ -43,6 +44,7 @@
     "mobx": "^3.2.1",
     "mobx-react": "^4.1.8",
     "mobx-stored": "^0.9.6",
+    "nodemailer": "^4.3.1",
     "npm-run-all": "^4.0.2",
     "package": "^1.0.1",
     "react": "^15.6.1",
@@ -58,6 +60,7 @@
     "react-stickynode": "^1.4.0",
     "react-twitter-widgets": "^1.5.1",
     "seraph": "^0.15.2",
+    "voucher-code-generator": "^1.1.1",
     "webpack": "^2.4.1"
   },
   "devDependencies": {

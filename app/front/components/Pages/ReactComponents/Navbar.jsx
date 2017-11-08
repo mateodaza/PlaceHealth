@@ -20,7 +20,7 @@ import dbuser from '../../../../../api/src/models/users.js';
         };
     }
 
-    componentDidMount(){
+    componentWillMount(){
         this.getStuff();
     }
 
@@ -50,7 +50,7 @@ import dbuser from '../../../../../api/src/models/users.js';
         if(path[path.length-2] !== '#'){
             setTimeout(function(){
                 window.location.reload();
-            }, 400);
+            }, 200);
         }
     }
 
@@ -82,12 +82,7 @@ import dbuser from '../../../../../api/src/models/users.js';
                             </NavItem>
                         </Nav>
                         <Nav>
-                            <NavItem eventKey={2} href="#/doc">
-                                <span style={{fontSize: '150%', color:'whitesmoke' , opacity:0.8}}>Documentación</span>
-                            </NavItem>
-                        </Nav>
-                        <Nav>
-                            <NavItem eventKey={3} href="#/auth">
+                            <NavItem eventKey={2} href="#/auth">
                             {
                                 localStore.isLogged && (   //Change this token plz. or not
                                     <span style={{fontSize: '150%', color:'whitesmoke' , opacity:0.8}}>Dashboard</span>
@@ -98,13 +93,13 @@ import dbuser from '../../../../../api/src/models/users.js';
                         <Nav pullRight>
                             {
                                 localStore.isLogged ? (
-                                    <NavItem eventKey={4} href="#" >
+                                    <NavItem eventKey={3} href="#" >
                                         <span style={{fontSize: '150%', color: 'whitesmoke', opacity:0.8}} onClick={this.logout.bind(this)}>
                                             Logout
                                         </span>
                                     </NavItem>
                                 ): (
-                                    <NavItem eventKey={4} href="#/login" className="navbarLog">
+                                    <NavItem eventKey={3} href="#/login" className="navbarLog">
                                         <span style={{fontSize: '150%', color: 'whitesmoke', opacity:0.8}}>
                                             Login
                                         </span>

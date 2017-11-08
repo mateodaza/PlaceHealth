@@ -1,9 +1,53 @@
 import db from '../database.js';
+//import nodemailer from 'nodemailer';
 
 export default class clients {
 
     try(){
         alert('My name jeff');
+    }
+
+    sendMail(userMail, voucherCode){
+        /*
+        // TO DO AT THE BACK 
+
+        // Generate test SMTP service account from ethereal.email
+        // Only needed if you don't have a real mail account for testing
+        nodemailer.createTestAccount((err, account) => {
+
+            // create reusable transporter object using the default SMTP transport
+            let transporter = nodemailer.createTransport({
+                host: 'smtp.ethereal.email',
+                port: 587,
+                auth: {
+                    user: 'ujir2as4cghrifqr@ethereal.email',
+                    pass: 'FxrrsWEkejrUHeCpAs'
+                }
+            });
+
+            // setup email data with unicode symbols
+            let mailOptions = {
+                from: '"Place Health 👻" <foo@blurdybloop.com>', // sender address
+                to: {userEmail}, // list of receivers
+                subject: 'Place Health Request ✔', // Subject line
+                text: 'Tu código promocional es: '+{voucherCode}, // plain text body
+                html: '<b>Hello world?</b>' // html body
+            };
+
+            // send mail with defined transport object
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    return console.log(error);
+                }
+                console.log('Message sent: %s', info.messageId);
+                // Preview only available when sending through an Ethereal account
+                console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+
+                // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@blurdybloop.com>
+                // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+            });
+        });
+        */
     }
 
     createUser(id, nombre, email, password, type, callback){
@@ -221,13 +265,13 @@ export default class clients {
         });
     }
 
-    setAppointment(email, service, username, userId, userEmail, userDesc, callback){
+    setAppointment(email, service, username, userId, userEmail, userDesc, code, callback){
         let cypherQuery = "MATCH (n {email: {email} }) " +
             "MERGE (t:Patient {name: {username}, userId: {userId}, email:{userEmail}}) "+
             "CREATE UNIQUE (t)-[r:SOLICITA]-> (n) "+
-            "SET r.patientName={username}, r.service={service}, r.patientId={userId}, r.patientEmail={userEmail}, r.patientDesc={userDesc} ";
+            "SET r.patientName={username}, r.code={code},r.service={service}, r.patientId={userId}, r.patientEmail={userEmail}, r.patientDesc={userDesc} ";
         db.query(cypherQuery, {email: email, service: service, username: username,
-                                userId: userId, userEmail: userEmail, userDesc: userDesc}, function(err, results) {
+                                userId: userId, userEmail: userEmail, userDesc: userDesc, code: code}, function(err, results) {
             if (err) {
                 console.error('Error creating new relation', err);
                 return callback(err);

@@ -25,5 +25,6 @@
     "no-unexpected-multiline": 0,
     "no-unused-vars": 1,
     "react/jsx-uses-vars": 2,
+    "no-undef": 1,
   }
 }
