@@ -42,7 +42,7 @@ import voucher_codes from 'voucher-code-generator';
                                         this.state.userId, this.state.userEmail, this.state.userDescription, voucherCode, function(result){
                         this.props.onHide();
                         //Send mail
-                        alert('Tu código promocional es ' + voucherCode + '. Espera a ser contactado!');
+                        alert('Tu código promocional es ' + voucherCode + '. Por favor no lo pierdas y espera a ser contactado!');
               }.bind(this));
         }else{
             alert("Por favor, completa todos los campos");

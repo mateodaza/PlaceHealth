@@ -521,6 +521,7 @@ import dbuser from '../../../../../api/src/models/users.js';
                                                         <h4> <strong>ID: </strong> {i.m.userId}</h4>
                                                         <h4> <strong>Email: </strong> {i.m.email}</h4>
                                                         <h4> <strong>Nota: </strong> {i.r.properties.patientDesc}</h4>
+                                                        <h4> <strong>Código: </strong> {i.r.properties.code}</h4>
                                                     </div>
                                             </ListGroupItem>
                                         })
