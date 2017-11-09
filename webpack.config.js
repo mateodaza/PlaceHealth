@@ -1,5 +1,6 @@
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {  
   entry: [
@@ -16,6 +17,7 @@ module.exports = {
     //hot: true
   },
   plugins: [
+    new UglifyJSPlugin(),
     new HtmlWebpackPlugin({
       title: 'TBA',
      // filename: 'index.html'
@@ -23,7 +25,7 @@ module.exports = {
     })
   ],
   module: {
-    loaders: [
+    rules: [
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.css$/, use: [ 'style-loader', 'css-loader' ]},
