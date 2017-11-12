@@ -2,6 +2,7 @@ import React from 'react';
 import { PageHeader, Form, FormGroup, FormControl, ControlLabel, Col, Button, ButtonToolbar} from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import Navbar from '../ReactComponents/Navbar.jsx';
+import {withRouter} from "react-router-dom";
 
 import { observer, observable } from 'mobx-react';
 import localStore from '../../../../src/localStore.js'
@@ -11,10 +12,10 @@ import bcrypt from 'bcryptjs';
 //Database
 import dbuser from '../../../../../api/src/models/users.js';
 
-@observer export default class Login extends React.Component {
+@observer class Login extends React.Component {
 
-    constructor(){
-        super();
+    constructor(props, context){
+        super(props, context);
         this.state = {
             email: '',
             pass: '',
@@ -43,7 +44,7 @@ import dbuser from '../../../../../api/src/models/users.js';
                         localStore.userEmail = userData.email;
                         localStore.sessionToken = auth.generateToken(userData);
                         localStore.isLogged = true;
-                        window.location=('/#/auth');
+                        this.props.history.push("/auth");
                     }else{
                         this.setState({email: '', pass: ''});
                         alert('Have you joined us?');
@@ -105,3 +106,5 @@ import dbuser from '../../../../../api/src/models/users.js';
         );
     }
 }
+
+export default withRouter(Login);

@@ -4,6 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import MdAccountBox from 'react-icons/lib/md/account-box';
 import MdSearch from 'react-icons/lib/md/search';
 import Suggest from './AutoSuggest.jsx';
+import {withRouter} from "react-router-dom";
 
 import { observer } from 'mobx-react';
 import localStore from '../../../../src/localStore.js';
@@ -11,7 +12,7 @@ import localStore from '../../../../src/localStore.js';
 //Database
 import dbuser from '../../../../../api/src/models/users.js';
 
-@observer export default class MainHomeNavbar extends React.Component {
+@observer class MainHomeNavbar extends React.Component {
     constructor(){
         super();
         this.state = {
@@ -46,7 +47,7 @@ import dbuser from '../../../../../api/src/models/users.js';
 
     search(){
         let path = window.location.href.split('/');
-        window.location=('/#/search/'+localStore.navSearchItem.replace(/\s/g, ''));
+        this.props.history.push('/search/'+localStore.navSearchItem.replace(/\s/g, ''));       
         if(path[path.length-2] !== '#'){
             setTimeout(function(){
                 window.location.reload();
@@ -61,6 +62,7 @@ import dbuser from '../../../../../api/src/models/users.js';
 
     logout(){
         localStore.reset();   //To reset default values
+        this.props.history.push("/");
     }
 
     render() {
@@ -148,3 +150,5 @@ import dbuser from '../../../../../api/src/models/users.js';
     }
 
 }
+
+export default withRouter(MainHomeNavbar);
