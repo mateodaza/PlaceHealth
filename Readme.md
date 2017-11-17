@@ -31,13 +31,9 @@ Produce bundle.js.
 ```sh
 $ npm run build
 ```
-Produce bundle.js for production.
-```sh
-$ npm run build:prod
-```
  Start server at localhost:3000.
 ```sh
-$ npm run webserver
+$ npm run start
 ```
 Start dev server at localhost:8080.
 ```sh

@@ -1,6 +1,5 @@
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {  
   entry: [
@@ -17,7 +16,6 @@ module.exports = {
     //hot: true
   },
   plugins: [
-    new UglifyJSPlugin(),
     new HtmlWebpackPlugin({
       title: 'TBA',
      // filename: 'index.html'

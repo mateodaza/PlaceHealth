@@ -4,7 +4,7 @@ const serve = require('koa-static');
 const app = new Koa();
 const koaWebpack = require('koa-webpack');
 const Webpack = require('webpack');
-const config = require('../../webpack.config.js');
+const config = require('../../webpack.common.js');
 
 //...
 /* KOA BASIC USE

@@ -68,7 +68,7 @@ import dbuser from '../../../../../api/src/models/users.js';
     render() {
         return (
             <div  className={this.props.type}>
-                <Navbar>
+                <Navbar toggleButton staticTop={true} fluid={true}>
                     <Navbar.Header>
                         <Navbar.Brand>
                             <a href="#" style={{fontSize: '150%', color:'whitesmoke'}}>

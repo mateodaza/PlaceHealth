@@ -109,8 +109,6 @@ import dbuser from '../../../../../api/src/models/users.js';
         let user = new dbuser();
         user.findUser(localStore.userEmail, function (data){
             this.setState({type : data[Object.keys(data)[1]][0], userData: data.n});
-            //update component
-            this.setState();
         }.bind(this));
 
         //Get All INFO
