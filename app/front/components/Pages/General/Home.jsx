@@ -27,7 +27,7 @@ import SectionTwo from '../ReactComponents/MainHomeSectionTwo.jsx';
                   </Sticky>
               </div>
               <div>
-                  <h1 className="overlay">Vive mejor</h1>
+                  <h1 className="overlay">keep calm and carry on</h1>
               </div>
           </div>
 
